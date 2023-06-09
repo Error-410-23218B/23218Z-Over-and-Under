@@ -16,12 +16,17 @@ vex::brain       Brain;
 // define your global instances of motors and other devices here
 
 
+void drivercontrol(){
+
+}
+
 int main() {
 
     Brain.Screen.printAt( 10, 50, "Hello V5" );
    
+   
     while(1) {
-        
+            
         // Allow other tasks to run
         this_thread::sleep_for(10);
     }

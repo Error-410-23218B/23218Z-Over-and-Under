@@ -6,6 +6,30 @@
 #include "v5.h"
 #include "v5_vcs.h"
 
+extern brain Brain;
+extern competition Competition;
+
+extern controller Controller1;
+extern motor leftMotorA;
+extern motor leftMotorB;
+extern motor_group LeftDriveSmart;
+extern motor rightMotorA; 
+extern motor rightMotorB;
+extern motor_group RightDriveSmart;
+extern drivetrain Drivetrain;
+extern encoder FrontEncoderA;
+extern encoder BackEncoder;
+extern encoder FrontEncoderB;
+
+
+
+
+
+
+
+
+
+
 
 #define waitUntil(condition)                                                   \
   do {                                                                         \
