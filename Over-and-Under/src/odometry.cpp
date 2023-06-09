@@ -47,10 +47,16 @@ public:
 };
 
 void tracking(){
+float prevAbsOrientation;
 float prevEncoderDelta;
 float encoderDistanceDelta = EncoderLeft.encoderTravel + EncoderRight.encoderTravel;
-float absOrientation = encoderDistanceDelta + (EncoderLeft.encoderTravel - EncoderRight.encoderTravel);
+float absOrientation = encoderDistanceDelta + ((EncoderLeft.encoderTravel - EncoderRight.encoderTravel)/(sL+sR));
+float deltaAbsOrientation = absOrientation - prevAbsOrientation;
+prevAbsOrientation = absOrientation;
+float localOffset = 2 * sin(deltaAbsOrientation/2)*;
+if(deltaAbsOrientation == 0){
 
+}
 
 }
 
