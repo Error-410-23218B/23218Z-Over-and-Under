@@ -3,14 +3,15 @@
         {
             "name": "Win32",
             "includePath": [
-                "${workspaceFolder}/**"
+                "${workspaceFolder}/**",
+                "C:\\Users\\Rohan\\AppData\\Roaming\\Code\\User\\globalStorage\\vexrobotics.vexcode\\sdk\\cpp\\V5\\V5_20220726_10_00_00\\vexv5\\**"
             ],
             "defines": [
                 "_DEBUG",
                 "UNICODE",
                 "_UNICODE"
             ],
-            "compilerPath": "C:\\Program Files\\LLVM\\bin\\clang.exe",
+            "compilerPath": "",
             "cStandard": "c17",
             "cppStandard": "c++14",
             "intelliSenseMode": "windows-clang-x64"

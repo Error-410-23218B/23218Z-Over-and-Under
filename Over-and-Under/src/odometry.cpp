@@ -1,5 +1,9 @@
+#define _USE_MATH_DEFINES
 #include "vex.h"
-#include <cmath>
+#include <math.h>
+#include <array>
+using namespace std;
+
 //add class here for all 3 encoders.
 /*
 int trackingAlgorithm(){
@@ -25,15 +29,11 @@ const float sR= 5.0;
 
 //The class is here.
 class Odometry{
-
-
 public:
     float encoderDeg;
     float encoderTravel =   2 * M_PI * encoderDelta; 
     float encoderDelta;
     float prevEncoder;
-
-
     Odometry(float encoder){
 
         encoderDeg = encoder;
@@ -42,14 +42,14 @@ public:
 
 
     }
-
-
-
-
 };
 
+
 void tracking(){
-float localOffset[2];
+array<double,2> globalOffset;
+array<double,2>localOffset;
+array<double,2>prevGlobalOffset;
+array<double,2>absoulutePosition;
 float prevAbsOrientation;
 float prevEncoderDelta;
 float encoderDistanceDelta = EncoderLeft.encoderTravel + EncoderRight.encoderTravel;
@@ -58,6 +58,8 @@ float deltaAbsOrientation = absOrientation - prevAbsOrientation;
 prevAbsOrientation = absOrientation;
 float averageOrientation;
 float localOffset = 2 * sin(deltaAbsOrientation/2);
+
+
 if(deltaAbsOrientation == 0){
 
 
@@ -66,16 +68,24 @@ if(deltaAbsOrientation == 0){
 else{
     localOffset[0] = 2 * sin((deltaAbsOrientation/2)* (EncoderLeft.encoderTravel/deltaAbsOrientation) +  EncoderBack.encoderTravel);
     localOffset[1] = (EncoderRight.encoderDeg/deltaAbsOrientation) + EncoderRight.encoderTravel;
-
-
-
-
 }
 
  averageOrientation = prevAbsOrientation + (deltaAbsOrientation/2);
  
+ globalOffset[0] = sqrt(pow(localOffset[0],2) + pow(localOffset[1],2));
+ globalOffset[1] = atan(localOffset[1]/localOffset[1]);
+ globalOffset[0] = -averageOrientation - (0.75*M_PI);
+for (int i = 0; i<2;i++) absoulutePosition[i] = prevGlobalOffset[i] + globalOffset[i];
+
+prevGlobalOffset = globalOffset;
+
+
+
 
 }
+
+
+    
 
 
 Odometry EncoderLeft(1.0);
