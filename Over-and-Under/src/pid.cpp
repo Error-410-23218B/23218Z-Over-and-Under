@@ -22,10 +22,11 @@ double eftl::PIDController::step(double isetpoint, double process_variable)
   derivative = error - prevError;
   prevError = error;
   Power = isetpoint * kF + error * kP + integral * kI + derivative * kD;
- 
 
 return Power;
   
+
+
 
 
 }

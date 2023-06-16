@@ -21,6 +21,8 @@ const float sL= 5.0;
 const float sR= 5.0;
 
 
+
+
 //The class is here.
 class Odometry{
 
@@ -47,20 +49,36 @@ public:
 };
 
 void tracking(){
+float localOffset[2];
 float prevAbsOrientation;
 float prevEncoderDelta;
 float encoderDistanceDelta = EncoderLeft.encoderTravel + EncoderRight.encoderTravel;
 float absOrientation = encoderDistanceDelta + ((EncoderLeft.encoderTravel - EncoderRight.encoderTravel)/(sL+sR));
 float deltaAbsOrientation = absOrientation - prevAbsOrientation;
 prevAbsOrientation = absOrientation;
-float localOffset = 2 * sin(deltaAbsOrientation/2)*;
+float averageOrientation;
+float localOffset = 2 * sin(deltaAbsOrientation/2);
 if(deltaAbsOrientation == 0){
 
+
+
+}
+else{
+    localOffset[0] = 2 * sin((deltaAbsOrientation/2)* (EncoderLeft.encoderTravel/deltaAbsOrientation) +  EncoderBack.encoderTravel);
+    localOffset[1] = (EncoderRight.encoderDeg/deltaAbsOrientation) + EncoderRight.encoderTravel;
+
+
+
+
 }
 
+ averageOrientation = prevAbsOrientation + (deltaAbsOrientation/2);
+ 
+
 }
 
 
-Odometry EncoderLeft(5.0);
-Odometry EncoderRight(6.0);
+Odometry EncoderLeft(1.0);
+Odometry EncoderRight(2.0);
+Odometry EncoderBack(3.0);
 
