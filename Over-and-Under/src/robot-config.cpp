@@ -14,7 +14,6 @@ motor rightMotorA = motor(PORT17, ratio18_1, false);
 motor rightMotorB = motor(PORT18, ratio18_1, false);
 motor_group RightDriveSmart = motor_group(rightMotorA, rightMotorB);
 drivetrain Drivetrain = drivetrain(LeftDriveSmart, RightDriveSmart, 478.78, 435, 288, mm, 1);
-encoder LeftEncoder = encoder();
 bool DrivetrainNeedsToBeStopped_Controller1 = true;
 bool Controller1RightShoulderControlMotorsStopped = true;
 

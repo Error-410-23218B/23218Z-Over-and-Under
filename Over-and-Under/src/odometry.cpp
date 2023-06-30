@@ -29,7 +29,11 @@ const float sR= 5.0;
 
 //The class is here.
 class Odometry{
-
+public:
+        float encoderTravel;
+        float encoderDeg; 
+        float encoderDelta;
+        float prevEncoder;
     Odometry(float encoder){
 
         encoderDeg = encoder;

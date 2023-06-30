@@ -3,8 +3,8 @@
 #define drivetrain_h
 #include "vex.h"
 
-typedef unsigned char directionType;
-
+typedef signed char directionType;
+typedef signed char turnType;
 
 namespace eftl{
 class customDrivetrain{
