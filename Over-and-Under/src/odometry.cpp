@@ -30,10 +30,10 @@ const float sR= 5.0;
 //The class is here.
 class Odometry{
 public:
-    float encoderDeg;
-    float encoderTravel =   2 * M_PI * encoderDelta; 
-    float encoderDelta;
-    float prevEncoder;
+        float encoderTravel;
+        float encoderDeg; 
+        float encoderDelta;
+        float prevEncoder;
     Odometry(float encoder){
 
         encoderDeg = encoder;
@@ -45,7 +45,7 @@ public:
 };
 
 
-void tracking(){
+int tracking(){
 array<double,2> globalOffset;
 array<double,2>localOffset;
 array<double,2>prevGlobalOffset;
@@ -61,7 +61,8 @@ float localOffset = 2 * sin(deltaAbsOrientation/2);
 
 
 if(deltaAbsOrientation == 0){
-
+localOffset[0] =  EncoderBack.encoderDeg;
+localOffset[1] = EncoderRight.encoderDeg;
 
 
 }
@@ -71,7 +72,6 @@ else{
 }
 
  averageOrientation = prevAbsOrientation + (deltaAbsOrientation/2);
- 
  globalOffset[0] = sqrt(pow(localOffset[0],2) + pow(localOffset[1],2));
  globalOffset[1] = atan(localOffset[1]/localOffset[1]);
  globalOffset[0] = -averageOrientation - (0.75*M_PI);
@@ -80,7 +80,7 @@ for (int i = 0; i<2;i++) absoulutePosition[i] = prevGlobalOffset[i] + globalOffs
 prevGlobalOffset = globalOffset;
 
 
-
+return 0;
 
 }
 
