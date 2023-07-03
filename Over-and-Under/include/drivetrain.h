@@ -16,15 +16,16 @@ class customDrivetrain{
        double trn_mm;
        
     
-    customDrivetrain::customDrivetrain(vex::motor_group &l, vex::motor_group &r, double wheelTravel=320,double trackWidth=320, double wheelBase=130,vex::distanceUnits unit=vex::distanceUnits::mm,double externalGearRatio=1.0);
-    static double slew(double input);
+    eftl::customDrivetrain::customDrivetrain(vex::motor_group &l, vex::motor_group &r, double wheelTravel = 320, double trackWidth = 320, double wheelBase = 130, vex::distanceUnits unit = vex::distanceUnits::mm, double externalGearRatio = 1.0);
+    static double slew(double input);   
     void spin();
-    void  velocity(double veloc);
+    void  setVelocity(double veloc);
     static int velocTR();
     void stop();
-    void turnFor(turnType turnvar,double turnAmount);
-    void spinFor(double spinPos,directionType direction);
+    void turnFor(vex::turnType turnvar,double turnAmount);
+    void spinFor(double spinPos,vex::directionType direction);
     void odometricMotion();
+    
 };
 
 

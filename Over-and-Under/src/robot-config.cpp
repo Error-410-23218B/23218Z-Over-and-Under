@@ -1,5 +1,5 @@
 #include "vex.h"
-
+#include "drivetrain.h"
 using  namespace vex;
 
 
@@ -14,6 +14,9 @@ motor rightMotorA = motor(PORT17, ratio18_1, false);
 motor rightMotorB = motor(PORT18, ratio18_1, false);
 motor_group RightDriveSmart = motor_group(rightMotorA, rightMotorB);
 drivetrain Drivetrain = drivetrain(LeftDriveSmart, RightDriveSmart, 478.78, 435, 288, mm, 1);
+motor_group DrivetrainLeft = motor_group(leftMotorA,leftMotorB);
+motor_group DrivetrainRight = motor_group(rightMotorA,rightMotorB);
+eftl::customDrivetrain DrivetrainOdometry = eftl::customDrivetrain(DrivetrainLeft,DrivetrainRight);
 bool DrivetrainNeedsToBeStopped_Controller1 = true;
 bool Controller1RightShoulderControlMotorsStopped = true;
 

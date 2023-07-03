@@ -1,4 +1,3 @@
-#include "robot-config.h"
 #include "vex.h"
 #include "pid.h"
 #include "drivetrain.h"
@@ -17,7 +16,7 @@ eftl::PIDController RightTurn(0.0,0.0,0.0,0.0);
 eftl::PIDController DrivePos(0.0,0.0,0.0,0.0);
 
 
-eftl::customDrivetrain::customDrivetrain(vex::motor_group &l, vex::motor_group &r, double wheelTravel = 320, double trackWidth = 320, double wheelBase = 130, vex::distanceUnits unit = vex::distanceUnits::mm, double externalGearRatio = 1.0)
+eftl::customDrivetrain::customDrivetrain(vex::motor_group &l, vex::motor_group &r, double wheelTravel, double trackWidth, double wheelBase, vex::distanceUnits unit, double externalGearRatio)
 {   
 
     deg_mm = (pi*wheelBase)/360;
@@ -68,10 +67,10 @@ void eftl::customDrivetrain::spin(){
 
 }
 
-void eftl::customDrivetrain::spinFor(double spinPos,directionType direction){
+void eftl::customDrivetrain::spinFor(double spinPos,vex::directionType direction){
 
-    DrivetrainLeft.spinFor(direction,DrivePos.step(spinPos/deg_mm,DrivetrainLeft.rotation(degrees)),rotationUnits::deg);
-    DrivetrainRight.spinFor(direction,DrivePos.step(spinPos/deg_mm,DrivetrainLeft.rotation(degrees)),rotationUnits::deg);
+    DrivetrainLeft.spinFor(direction,DrivePos.step(spinPos/deg_mm,DrivetrainLeft.position(deg)),rotationUnits::deg);
+    DrivetrainRight.spinFor(direction,DrivePos.step(spinPos/deg_mm,DrivetrainLeft.position(deg)),rotationUnits::deg);
 
 }
 
@@ -81,7 +80,7 @@ void eftl::customDrivetrain::stop(){
     DrivetrainRight.stop();
 }                                               
 
-void eftl::customDrivetrain::turnFor(turnType turnVar,double turnAmount){
+void eftl::customDrivetrain::turnFor(vex::turnType turnVar,double turnAmount){
 
  if(turnVar == turnType::left)  {
 
@@ -94,12 +93,7 @@ void eftl::customDrivetrain::turnFor(turnType turnVar,double turnAmount){
  DrivetrainRight.spinFor(forward,(RightDrive.step((DrivetrainRight.position(degrees)+turnAmount/trn_mm),DrivetrainRight.position(degrees))),degrees);  
  }
  void eftl::customDrivetrain::odometricMotion(){
-
-
-
-
-
-
+        
  }
 } 
 

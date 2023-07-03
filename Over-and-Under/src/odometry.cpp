@@ -2,6 +2,7 @@
 #include "vex.h"
 #include <math.h>
 #include <array>
+#include "odometry.h"
 using namespace std;
 
 //add class here for all 3 encoders.
@@ -27,27 +28,20 @@ const float sR= 5.0;
 
 
 
-//The class is here.
-class Odometry{
-public:
-        float encoderTravel;
-        float encoderDeg; 
-        float encoderDelta;
-        float prevEncoder;
-    Odometry(float encoder){
 
+
+    Odometry::Odometry(float encoder){
         encoderDeg = encoder;
         encoderDelta = encoderDeg - prevEncoder; 
         prevEncoder = encoderDeg;
 
-
     }
-};
+
 
 
 int tracking(){
 array<double,2> globalOffset;
-array<double,2>
+array<double,2> localOffset;
 array<double,2>prevGlobalOffset;
 array<double,2>absoulutePosition;
 float prevAbsOrientation;
@@ -57,7 +51,7 @@ float absOrientation = encoderDistanceDelta + ((EncoderLeft.encoderTravel - Enco
 float deltaAbsOrientation = absOrientation - prevAbsOrientation;
 prevAbsOrientation = absOrientation;
 float averageOrientation;
-float localOffset = 2 * sin(deltaAbsOrientation/2);
+float deltaAbsOrientation = 2 * sin(deltaAbsOrientation/2);
 
 
 if(deltaAbsOrientation == 0){
