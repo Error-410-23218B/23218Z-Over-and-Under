@@ -2,7 +2,6 @@
 #include "vex.h"
 #include <math.h>
 #include <array>
-#include "odometry.h"
 using namespace std;
 
 //add class here for all 3 encoders.
@@ -28,26 +27,27 @@ const float sR= 5.0;
 
 
 
+//The class is here.
+class Odometry{
+public:
+        float encoderTravel;
+        float encoderDeg; 
+        float encoderDelta;
+        float prevEncoder;
+    Odometry(float encoder){
 
-
-    eftl::Odometry::Odometry(float encoder){
         encoderDeg = encoder;
         encoderDelta = encoderDeg - prevEncoder; 
         prevEncoder = encoderDeg;
 
+
     }
+};
 
 
-
-eftl::Odometry EncoderLeft(1.0);
-eftl::Odometry EncoderRight(2.0);
-eftl::Odometry EncoderBack(3.0);
-
-
-
-int eftl::Odometry::tracking(){
+int tracking(){
 array<double,2> globalOffset;
-array<double,2> localOffset;
+array<double,2>
 array<double,2>prevGlobalOffset;
 array<double,2>absoulutePosition;
 float prevAbsOrientation;
@@ -57,7 +57,7 @@ float absOrientation = encoderDistanceDelta + ((EncoderLeft.encoderTravel - Enco
 float deltaAbsOrientation = absOrientation - prevAbsOrientation;
 prevAbsOrientation = absOrientation;
 float averageOrientation;
-float wth = 2 * sin(deltaAbsOrientation/2);
+float localOffset = 2 * sin(deltaAbsOrientation/2);
 
 
 if(deltaAbsOrientation == 0){
@@ -87,4 +87,8 @@ return 0;
 
     
 
+
+Odometry EncoderLeft(1.0);
+Odometry EncoderRight(2.0);
+Odometry EncoderBack(3.0);
 
