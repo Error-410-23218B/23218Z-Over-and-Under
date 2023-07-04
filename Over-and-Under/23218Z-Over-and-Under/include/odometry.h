@@ -1,3 +1,7 @@
+#pragma once
+#ifndef odometry_h
+#define odometry_h
+
 #include "math.h"
 namespace eftl
 {
@@ -9,6 +13,8 @@ public:
     float prevEncoder;
 Odometry(float encoder);
 static int tracking();
-};
-};
 
+};
+}
+
+#endif odometry_h

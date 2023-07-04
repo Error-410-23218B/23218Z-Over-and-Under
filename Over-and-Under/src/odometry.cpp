@@ -44,21 +44,19 @@ eftl::Odometry EncoderRight(2.0);
 eftl::Odometry EncoderBack(3.0);
 
 
+
+
+int eftl::Odometry::tracking(){
+
 // Tracking Algorithm, calculates absoulute position of robot on field.
-void tracking()
-{
+
     // Vectors, first index is x value, second index is y value.
     array<double,2> polarCoordinates;
     array<double, 2> globalOffset;
     array<double, 2> localOffset;
     array<double, 2> prevGlobalOffset;
     array<double, 2> absoulutePosition;
-
-int eftl::Odometry::tracking(){
-array<double,2> globalOffset;
-array<double,2> localOffset;
-array<double,2>prevGlobalOffset;
-array<double,2>absoulutePosition;
+    
 float prevAbsOrientation;
 float prevEncoderDelta;
 float encoderDistanceDelta = EncoderLeft.encoderTravel + EncoderRight.encoderTravel;

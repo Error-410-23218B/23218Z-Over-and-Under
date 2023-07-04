@@ -30,10 +30,12 @@ void MainMenu(){
 void GUI_Handler(){
     //empty function why?
 }
-
-int main(){
+//WTF is there a definition of main here, main is the calling point for the whole program? wtf?
+void GUI(){
+    
     //TF are you doing, where are the brackets?
     MainMenu();//<----
     GUI_Handler();//<-----
+    //Why did you declare it as an int function, and no return?
 }
 
