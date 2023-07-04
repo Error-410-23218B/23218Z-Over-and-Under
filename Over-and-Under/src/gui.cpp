@@ -1,27 +1,39 @@
+#include <iostream>>
 #include "vex.h"
+#include <map>
 
 //excuse me wtf?, why declare as a 2d array, when it is a hashmap
-
+std::map<std::string,bool> slidesMap;
+//This is awful
+/*
+//This isn't python, what type is it?
 Slides[2][2]= {
     {"mainmenu.png", false},
     {"running.png", false}
 };
+*/
+
+
 
 void MainMenu(){
     //How did you screw up method calls?
-    Brain.Screen.Display(Slides[0])
+    Brain.Screen.render();
     //2d array = hashmap? wtf?
-    Slides[0][1] = true;
-    return;
+    // fixed your code.
+    slidesMap.insert({"mainmenu.png",false});
+    slidesMap.insert({"running.png",false});
+    slidesMap["running.png"] = true;
+    // why the empty return? It's a void function
+    //return;
 }
 
 void GUI_Handler(){
-    
+    //empty function why?
 }
 
 int main(){
     //TF are you doing, where are the brackets?
-    MainMenu;
-    GUI_Handler;
+    MainMenu();//<----
+    GUI_Handler();//<-----
 }
 
