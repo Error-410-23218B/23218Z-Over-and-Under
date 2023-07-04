@@ -1,9 +1,26 @@
 #include <iostream>>
 #include "vex.h"
 #include <map>
+std::map<std::string,bool> slidesMap;
+
+/* Use classes for the GUI, e.g button class, maybe nested?, as a private classs
+ class GUI{
+    private: // this could be protected too, if you need it to be, probably not, this ain't an API
+            class Buttons{
+                protected:
+                        blah blah
+            }
+
+            class Screen{
+                protected:
+                        Blah Blah
+            }
+
+ }
+ */
+
 
 //excuse me wtf?, why declare as a 2d array, when it is a hashmap
-std::map<std::string,bool> slidesMap;
 //This is awful
 /*
 //This isn't python, what type is it?
@@ -32,7 +49,7 @@ void GUI_Handler(){
 }
 //WTF is there a definition of main here, main is the calling point for the whole program? wtf?
 void GUI(){
-    
+
     //TF are you doing, where are the brackets?
     MainMenu();//<----
     GUI_Handler();//<-----
