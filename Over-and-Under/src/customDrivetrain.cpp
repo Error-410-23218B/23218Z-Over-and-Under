@@ -30,14 +30,17 @@ double eftl::customDrivetrain::slew(double input)   {
 
     time_t start, end;
     double slst = time(&start);
-    double slewLastInput;
-    double max_increase = slst / 10;
-    double desired_change = input - slewLastInput;
-
+    double slewLastInput; 
+    double output;
+    double desired_change;
     double clamped_increase = desired_change;
-
-    double output = slewLastInput + clamped_increase;
+    output = slewLastInput + clamped_increase;
     slewLastInput = output;
+    double max_increase = slst / 10;
+    desired_change = input - slewLastInput;
+    
+    
+  
     double slen = time(&end);
     double sl = slen - slst;
     return output;
@@ -55,15 +58,15 @@ int eftl::customDrivetrain::velocTR()
 {
     while (true){ 
 
-                  VelocL = LeftDrive.step(slew(Velocity), DrivetrainLeft.voltage(voltageUnits::mV));    
-                  VelocR = RightDrive.step(slew(Velocity), DrivetrainRight.voltage(voltageUnits::mV));
+                  eftl::customDrivetrain::VelocL = LeftDrive.step(slew(Velocity), DrivetrainLeft.voltage(voltageUnits::mV));    
+                  eftl::customDrivetrain::VelocR = RightDrive.step(slew(Velocity), DrivetrainRight.voltage(voltageUnits::mV));
                   
                 }
 }
 
 void eftl::customDrivetrain::spin(){
-    DrivetrainLeft.spin(forward,VelocL,voltageUnits::mV);
-    DrivetrainRight.spin(forward,VelocR,voltageUnits::mV);
+    DrivetrainLeft.spin(forward,eftl::customDrivetrain::VelocL,voltageUnits::mV);
+    DrivetrainRight.spin(forward,eftl::customDrivetrain::VelocR,voltageUnits::mV);
 
 }
 
@@ -82,20 +85,20 @@ void eftl::customDrivetrain::stop(){
 
 void eftl::customDrivetrain::turnFor(vex::turnType turnVar,double turnAmount){
 
- if(turnVar == turnType::left)  {
+ if(turnVar == vex::turnType::left)  {
 
  DrivetrainLeft.spinFor(forward,LeftDrive.step((DrivetrainLeft.position(degrees)+turnAmount)/trn_mm,DrivetrainLeft.position(degrees)),degrees); 
  DrivetrainRight.spinFor(reverse,(RightDrive.step((DrivetrainRight.position(degrees)+turnAmount/trn_mm),DrivetrainRight.position(degrees))),degrees);
  }
 
- if(turnVar == turnType::right){
+ if(turnVar == vex::turnType::right){
     DrivetrainLeft.spinFor(reverse,LeftDrive.step((DrivetrainLeft.position(degrees)+turnAmount/trn_mm),DrivetrainLeft.position(degrees)),degrees); 
  DrivetrainRight.spinFor(forward,(RightDrive.step((DrivetrainRight.position(degrees)+turnAmount/trn_mm),DrivetrainRight.position(degrees))),degrees);  
  }
- void eftl::customDrivetrain::odometricMotion(){
-        
- }
+
 } 
+
+ void eftl::customDrivetrain::odometricMotion(){}
 
 
 

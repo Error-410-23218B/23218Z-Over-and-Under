@@ -30,7 +30,7 @@ const float sR= 5.0;
 
 
 
-    Odometry::Odometry(float encoder){
+    eftl::Odometry::Odometry(float encoder){
         encoderDeg = encoder;
         encoderDelta = encoderDeg - prevEncoder; 
         prevEncoder = encoderDeg;
@@ -39,7 +39,13 @@ const float sR= 5.0;
 
 
 
-int tracking(){
+eftl::Odometry EncoderLeft(1.0);
+eftl::Odometry EncoderRight(2.0);
+eftl::Odometry EncoderBack(3.0);
+
+
+
+int eftl::Odometry::tracking(){
 array<double,2> globalOffset;
 array<double,2> localOffset;
 array<double,2>prevGlobalOffset;
@@ -51,7 +57,7 @@ float absOrientation = encoderDistanceDelta + ((EncoderLeft.encoderTravel - Enco
 float deltaAbsOrientation = absOrientation - prevAbsOrientation;
 prevAbsOrientation = absOrientation;
 float averageOrientation;
-float deltaAbsOrientation = 2 * sin(deltaAbsOrientation/2);
+float wth = 2 * sin(deltaAbsOrientation/2);
 
 
 if(deltaAbsOrientation == 0){
@@ -81,8 +87,4 @@ return 0;
 
     
 
-
-Odometry EncoderLeft(1.0);
-Odometry EncoderRight(2.0);
-Odometry EncoderBack(3.0);
 
