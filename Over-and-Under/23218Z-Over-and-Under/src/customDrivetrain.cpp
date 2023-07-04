@@ -55,29 +55,29 @@ int eftl::customDrivetrain::velocTR()
 {
     while (true){ 
 
-                  VelocL = LeftDrive.step(slew(Velocity), DrivetrainLeft.voltage(voltageUnits::mV));    
-                  VelocR = RightDrive.step(slew(Velocity), DrivetrainRight.voltage(voltageUnits::mV));
+                  eftl::customDrivetrain::VelocL = LeftDrive.step(slew(Velocity), DrivetrainLeft.voltage(voltageUnits::mV));    
+                  eftl::customDrivetrain::VelocR = RightDrive.step(slew(Velocity), DrivetrainRight.voltage(voltageUnits::mV));
                   
                 }
 }
 
 void eftl::customDrivetrain::spin(){
-    DrivetrainLeft.spin(forward,VelocL,voltageUnits::mV);
-    DrivetrainRight.spin(forward,VelocR,voltageUnits::mV);
+    DrivetrainLeft.spin(forward,eftl::customDrivetrain::VelocL,voltageUnits::mV);
+    DrivetrainRight.spin(forward,eftl::customDrivetrain::VelocR,voltageUnits::mV);
 
 }
 
 void eftl::customDrivetrain::spinFor(double spinPos,vex::directionType direction){
 
-    DrivetrainLeft.spinFor(direction,DrivePos.step(spinPos/deg_mm,DrivetrainLeft.rotation(degrees)),rotationUnits::deg);
-    DrivetrainRight.spinFor(direction,DrivePos.step(spinPos/deg_mm,DrivetrainLeft.rotation(degrees)),rotationUnits::deg);
+    DrivetrainLeft.spinFor(direction,DrivePos.step(spinPos/deg_mm,DrivetrainLeft.position(degrees)),rotationUnits::deg);
+    DrivetrainRight.spinFor(direction,DrivePos.step(spinPos/deg_mm,DrivetrainLeft.position(degrees)),rotationUnits::deg);
 
 }
 
 
 void eftl::customDrivetrain::stop(){
     DrivetrainLeft.stop();
-    DrivetrainRight.stop();
+    DrivetrainRight.stop(); 
 }                                               
 
 
