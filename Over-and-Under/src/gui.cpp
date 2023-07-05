@@ -1,5 +1,6 @@
 #include <iostream>>
 #include "vex.h"
+#include "gui.h"
 #include <map>
 std::map<std::string,bool> slidesMap;
 
@@ -8,17 +9,5 @@ std::map<std::string,bool> slidesMap;
     slidesMap.insert({"running.png",false});
 */
 
-class  gui{
-    public:
-        gui(x, y){
-            int x;
-            int y;
 
-            MainMenu(){
-
-            }
-            Running(){
-                //Nothing goes 
-            }
-        }
-}
+eftl::gui::gui{}
