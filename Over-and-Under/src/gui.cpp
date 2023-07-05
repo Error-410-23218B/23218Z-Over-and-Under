@@ -9,15 +9,18 @@ std::map<std::string,bool> slidesMap;
     slidesMap.insert({"running.png",false});
 */
 
-int eftl::gui::MainMenu(){
-
+int eftl::gui::Running(){
+    return 0;
 }
 
 int eftl::gui::MainMenu(){
+    return 0;
+}
 
+int eftl::gui::Handler(){
+    return 0;
 }
 
 eftl::gui::gui(int x, int y){
-
+    
 }
-

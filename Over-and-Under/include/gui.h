@@ -9,9 +9,12 @@ class gui
 
 public:
 
-    gui(int x, int y); 
-    int MainMenu();
-    int Running();
+    gui(int x, int y);
+    int Handler();
+
+private:
+    static int MainMenu();
+    static int Running();
 
 };
 

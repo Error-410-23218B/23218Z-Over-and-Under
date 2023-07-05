@@ -10,6 +10,7 @@
 #include "odometry.h"
 #include "pid.h"
 #include "drivetrain.h"
+#include "gui.h"
 
 using namespace vex;
 
@@ -26,10 +27,6 @@ int main() {
 //everything gets called from here, this is the only main method call like so
     Brain.Screen.printAt( 10, 50, "Hello V5" );
    
+    task gui(eftl::gui::gui);
    
-    while(1) {
-            
-        // Allow other tasks to run
-        this_thread::sleep_for(10);
-    }
 }
