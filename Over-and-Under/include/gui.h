@@ -9,7 +9,9 @@ class gui
 
 public:
 
-    gui(); 
+    gui(int x, int y); 
+    int MainMenu();
+    int Running();
 
 };
 
