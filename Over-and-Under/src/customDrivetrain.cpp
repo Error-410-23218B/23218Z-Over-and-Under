@@ -98,7 +98,9 @@ void eftl::customDrivetrain::turnFor(vex::turnType turnVar,double turnAmount){
 
 } 
 
- void eftl::customDrivetrain::odometricMotion(){}
+ void eftl::customDrivetrain::odometricMotion(){
+    
+ }
 
 
 
