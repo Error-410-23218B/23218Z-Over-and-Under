@@ -46,12 +46,11 @@ eftl::Odometry EncoderBack(3.0);
 
 
 
-int eftl::Odometry::tracking(){
+array<double,2> eftl::Odometry::tracking(){
 
 // Tracking Algorithm, calculates absoulute position of robot on field.
-
     // Vectors, first index is x value, second index is y value.
-    array<double,2> polarCoordinates;
+    array<double, 2> polarCoordinates;
     array<double, 2> globalOffset;
     array<double, 2> localOffset;
     array<double, 2> prevGlobalOffset;
@@ -64,7 +63,6 @@ float absOrientation = encoderDistanceDelta + ((EncoderLeft.encoderTravel - Enco
 float deltaAbsOrientation = absOrientation - prevAbsOrientation;
 prevAbsOrientation = absOrientation;
 float averageOrientation;
-float wth = 2 * sin(deltaAbsOrientation/2);
 
 
 if(deltaAbsOrientation == 0){
@@ -82,8 +80,8 @@ else{
 
     // Conversion of vectors from Cartesian Coordinates(Normal) to Polar Coordinates
     polarCoordinates[0] = sqrt(pow(localOffset[0], 2) + pow(localOffset[1], 2)); // cartesian:x gets turned into polar: r
-    polarCoordinates[1] = atan(localOffset[1] / localOffset[0]);                 // cartesian:y gets turned into polar:θ
-    polarCoordinates[0] =  - (0.75 * M_PI);                   // Rotate globalOffset by the negative of the average orientation, by changing polar:r
+    polarCoordinates[1] = atan(localOffset[1] / localOffset[0]);// cartesian:y gets turned into polar:θ
+    polarCoordinates[0] =  -(0.75 * M_PI);// Rotate globalOffset by the negative of the average orientation, by changing polar:r
 
     // Conversion back of vectors from Polar Coordinates to Cartesian coordinates
     globalOffset[0] = polarCoordinates[0] * cos(globalOffset[1]);
@@ -95,7 +93,8 @@ else{
 prevGlobalOffset = globalOffset;
 
 
-return 0;
+
+return absoulutePosition;
 
 }
 
