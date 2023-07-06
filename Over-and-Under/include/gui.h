@@ -10,7 +10,7 @@ class gui
 public:
 
     gui(int x, int y);
-    int Handler();
+    static int Handler();
 
 private:
     static int MainMenu();
