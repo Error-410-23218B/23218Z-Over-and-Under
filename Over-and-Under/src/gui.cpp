@@ -14,6 +14,7 @@ int eftl::gui::Running(){
 }
 
 int eftl::gui::MainMenu(){
+    Brain.Screen.drawImageFromFile
     return 0;
 }
 
