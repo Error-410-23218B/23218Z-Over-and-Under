@@ -36,7 +36,8 @@ int eftl::gui::AUTONSELECT(){
     return 0;
 }
 
-int eftl::gui::Handler(int x, int y){
+void eftl::gui::Handler(int x, int y){
+
     if (not sizeof(CurrentSlide) <= 1){
         AUTONSELECT();
     } else if (CurrentSlide == "AUTONSELECT" || CurrentSlide == "AUTONREDSELECT" || CurrentSlide == "AUTONBLUESELECT"){
@@ -68,7 +69,6 @@ int eftl::gui::Handler(int x, int y){
             }
         }
     }
-    return 0;
 }
 
 eftl::gui::gui(){

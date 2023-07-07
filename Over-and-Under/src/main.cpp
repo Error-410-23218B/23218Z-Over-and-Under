@@ -25,6 +25,6 @@ void drivercontrol(){
 
 int main() {
 //everything gets called from here, this is the only main method call like so
-    Brain.Screen.printAt( 10, 50, "Hello V5" );
-   
+    task(eftl::gui::Handler(0, 0));
+    Brain.Screen.pressed(eftl::gui::Handler(Brain.Screen.xPosition(), Brain.Screen.yPosition())); // When the brain is touched, the coordinates of the touch are refered back to the GUI handler;
 }

@@ -8,7 +8,7 @@ class gui
 {
 
 public:
-    static int Handler(int x, int y);
+    static void Handler(int x, int y);
     gui();
 private:
     static int AUTONSELECT();
@@ -16,7 +16,6 @@ private:
     static int AUTONBLUESELECT();
     static int AUTONREDRUN();
     static int AUTONBLUERUN();
-    static int AUTONRUNNING();
     static const char *CurrentSlide;
     static const char *ChosenPath;
     /*
