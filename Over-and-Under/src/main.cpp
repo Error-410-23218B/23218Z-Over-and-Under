@@ -27,6 +27,4 @@ int main() {
 //everything gets called from here, this is the only main method call like so
     Brain.Screen.printAt( 10, 50, "Hello V5" );
    
-    task gui(eftl::gui::Handler);
-   
 }

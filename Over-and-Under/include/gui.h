@@ -8,14 +8,24 @@ class gui
 {
 
 public:
-
-    gui(int x, int y);
-    static int Handler();
-
+    static int Handler(int x, int y);
+    gui();
 private:
-    static int MainMenu();
-    static int Running();
-
+    static int AUTONSELECT();
+    static int AUTONREDSELECT();
+    static int AUTONBLUESELECT();
+    static int AUTONREDRUN();
+    static int AUTONBLUERUN();
+    static int AUTONRUNNING();
+    static const char *CurrentSlide;
+    static const char *ChosenPath;
+    /*
+    ChosenPath can equal:
+        REDLEFT
+        REDRIGHT
+        BLUELEFT
+        BLUERIGHT
+    */
 };
 
 }

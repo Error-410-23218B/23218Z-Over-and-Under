@@ -1,3 +1,5 @@
+#include <array>
+
 namespace eftl{
 class Odometry{
     public:
