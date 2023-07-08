@@ -5,12 +5,17 @@ namespace eftl{
         double pos;
         double var;
 
-    }prevState,state,new_state,predict_state,measurement;
+    }prevState;
     
     
     class kalmanFilter{
         public:
-
+                double pos;
+                double var;
+                double state;
+                  double pos;
+                double var;
+                double state;
                 const double process_var = 0.1;
                 const double measurement_var = 0.1;
                 const double time_step = 0.01;
@@ -20,7 +25,8 @@ namespace eftl{
                 double predict();
                 double update();
                 void kalmanIterate();
-                double multiply(double ga );
+                double multiply(double gauss1,double gauss2);
+                
 
     };
 }
