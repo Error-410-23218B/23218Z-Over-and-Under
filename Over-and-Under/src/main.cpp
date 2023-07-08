@@ -24,13 +24,11 @@ void drivercontrol(){
 }
 
 void handlerCallback(){
-    Handler(Brain.Screen.xPosition(),Brain.Screen.yPosition());
+    Handler();
 }
-
 
 int main() {
 //everything gets called from here, this is the only main method call like so
-    AUTONSELECT;
     Brain.Screen.released(handlerCallback);// When the brain is touched, the coordinates of the touch are refered back to the GUI handler;
     task tracking(eftl::Odometry::trackingCallback,15);
     }

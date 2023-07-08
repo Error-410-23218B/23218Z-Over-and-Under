@@ -4,7 +4,7 @@
 #define gui_h
 
 
-void Handler(short int x, short int y);
+void Handler();
 
 
     short int AUTONSELECT();
@@ -12,6 +12,6 @@ void Handler(short int x, short int y);
     short int AUTONBLUESELECT();
     short int AUTONREDRUN();
     short int AUTONBLUERUN();
-    
+    extern std::string ChosenPath;
 
 #endif 
