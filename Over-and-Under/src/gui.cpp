@@ -3,8 +3,9 @@
 #include "gui.h"
 #include <map>
 std::map<std::string,bool> slidesMap;
-const char *CurrentSlide;
+std::string CurrentSlide;
 const char *ChosenPath;
+
 
 
 short int AUTONBLUERUN(){
@@ -39,34 +40,33 @@ short int AUTONREDSELECT(){
 
 void Handler(short int x, short int y){
 
-    if (not sizeof(CurrentSlide) <= 1){
-        AUTONSELECT();
-    } else if (CurrentSlide == "AUTONSELECT" || CurrentSlide == "AUTONREDSELECT" || CurrentSlide == "AUTONBLUESELECT"){
-        if (y >= 72 && y <= 204){
-            if (x >= 0 && x < 240){
-                if (CurrentSlide == "AUTONSELECT"){
+if (CurrentSlide == "AUTONSELECT" || CurrentSlide == "AUTONREDSELECT" || CurrentSlide == "AUTONBLUESELECT"){
+    if (y >= 72 && y <= 204){
+        if (x >= 0 && x < 240){
+            if (CurrentSlide == "AUTONSELECT"){
                     AUTONREDSELECT();
-                }
-                if (CurrentSlide == "AUTONREDSELECT"){
+            }
+            if (CurrentSlide == "AUTONREDSELECT"){
                     ChosenPath = "REDLEFT";
                     AUTONREDRUN();
-                }
-                if (CurrentSlide == "AUTONBLUESELECT"){
+            }
+            if (CurrentSlide == "AUTONBLUESELECT"){
                     ChosenPath = "BLUELEFT";
                     AUTONBLUERUN();
-                }
-            }else if (x <= 480){
-                if (CurrentSlide == "AUTONSELECT"){
+            }
+        }else if (x <= 480){
+            if (CurrentSlide == "AUTONSELECT"){
                     AUTONBLUESELECT();
-                }
-                if (CurrentSlide == "AUTONREDSELECT"){
+            }
+            if (CurrentSlide == "AUTONREDSELECT"){
                     ChosenPath = "REDRIGHT";
                     AUTONREDRUN();
-                }
-                if (CurrentSlide == "AUTONBLUESELECT"){
+            }
+            if (CurrentSlide == "AUTONBLUESELECT"){
                     ChosenPath = "BLUERIGHT";
                     AUTONBLUERUN();
-                }
+            }
+            
             }
         }
     }
