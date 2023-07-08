@@ -6,37 +6,37 @@ std::map<std::string,bool> slidesMap;
 const char *ChosenPath;
 const char *CurrentSlide;
 
-int AUTONBLUERUN(){
+short int AUTONBLUERUN(){
     Brain.Screen.drawImageFromFile("AUTONBLUE_RUN.png", 0, 0);
     CurrentSlide = "AUTONBLUERUN";
     return 0;
 }
 
-int AUTONREDRUN(){
+ short int AUTONREDRUN(){
     Brain.Screen.drawImageFromFile("AUTONRED_RUN.png", 0, 0);
     CurrentSlide = "AUTONREDRUN";
     return 0;
 }
 
-int AUTONBLUESELECT(){
+ short int AUTONBLUESELECT(){
     Brain.Screen.drawImageFromFile("AUTONBLUE_SELECT.png", 0, 0);
     CurrentSlide = "AUTONBLUESELECT";
     return 0;
 }
 
-int AUTONREDSELECT(){
+short int AUTONREDSELECT(){
     Brain.Screen.drawImageFromFile("AUTONRED_SELECT.png", 0, 0);
     CurrentSlide = "AUTONREDSELECT";
     return 0;
 }
 
- int AUTONSELECT(){
+ short int AUTONSELECT(){
     Brain.Screen.drawImageFromFile("AUTON_SELECT.png", 0, 0);
     CurrentSlide = "AUTONSELECT";
     return 0;
 }
 
-void Handler(int x, int y){
+void Handler(short int x, short int y){
 
     if (not sizeof(CurrentSlide) <= 1){
         AUTONSELECT();

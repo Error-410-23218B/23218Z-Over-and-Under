@@ -4,13 +4,13 @@
 #define gui_h
 
 
-void Handler(int x, int y);
+void Handler(short int x, short int y);
 
 
-    int AUTONSELECT();
-    int AUTONREDSELECT();
-    int AUTONBLUESELECT();
-    int AUTONREDRUN();
-    int AUTONBLUERUN();
+    short int AUTONSELECT();
+    short int AUTONREDSELECT();
+    short int AUTONBLUESELECT();
+    short int AUTONREDRUN();
+    short int AUTONBLUERUN();
 
 #endif 

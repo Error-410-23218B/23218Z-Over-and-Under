@@ -22,15 +22,15 @@ return 0;
 }
 */
 //Objects
-const float sL= 5.0;
-const float sR= 5.0;
+const  double sL= 5.0;
+const  double sR= 5.0;
 
 
 
 
 
 
-    eftl::Odometry::Odometry(float encoder){
+    eftl::Odometry::Odometry(long double encoder){
         encoderDeg = encoder;
         encoderDelta = encoderDeg - prevEncoder; 
         prevEncoder = encoderDeg;
@@ -46,15 +46,15 @@ eftl::Odometry EncoderBack(3.0);
 
 
 
-array<double,2> eftl::Odometry::tracking(){
+array< double,2> eftl::Odometry::tracking(){
 
 // Tracking Algorithm, calculates absoulute position of robot on field.
     // Vectors, first index is x value, second index is y value.
-    array<double, 2> polarCoordinates;
+    array< double, 2> polarCoordinates;
     array<double, 2> globalOffset;
     array<double, 2> localOffset;
-    array<double, 2> prevGlobalOffset;
-    array<double, 2> absoulutePosition;
+    array< double, 2> prevGlobalOffset;
+    array< double, 2> absoulutePosition;
     
 float prevAbsOrientation;
 float prevEncoderDelta;

@@ -26,7 +26,7 @@ eftl::customDrivetrain::customDrivetrain(vex::motor_group &l, vex::motor_group &
 };
 
 
-double eftl::customDrivetrain::slew(double input)   {
+long double eftl::customDrivetrain::slew(double input)   {
 
     time_t start, end;
     double slst = time(&start);
@@ -54,7 +54,7 @@ void eftl::customDrivetrain::setVelocity(double veloc)
 
 
 
-int eftl::customDrivetrain::velocTR()
+ int eftl::customDrivetrain::velocTR()
 {
     while (true){ 
 
@@ -62,6 +62,7 @@ int eftl::customDrivetrain::velocTR()
                   eftl::customDrivetrain::VelocR = RightDrive.step(slew(Velocity), DrivetrainRight.voltage(voltageUnits::mV));
                   
                 }
+                return 0;
 }
 
 void eftl::customDrivetrain::spin(){
