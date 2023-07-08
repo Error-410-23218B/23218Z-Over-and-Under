@@ -6,8 +6,6 @@ std::map<std::string,bool> slidesMap;
 const char *ChosenPath;
 const char *CurrentSlide;
 
-const char *CurrentSlide = "Startup";
-
 int AUTONBLUERUN(){
     Brain.Screen.drawImageFromFile("AUTONBLUE_RUN.png", 0, 0);
     CurrentSlide = "AUTONBLUERUN";
@@ -40,7 +38,7 @@ int AUTONREDSELECT(){
 
 void Handler(int x, int y){
 
-    if (CurrentSlide == "Startup"){
+    if (not sizeof(CurrentSlide) <= 1){
         AUTONSELECT();
     } else if (CurrentSlide == "AUTONSELECT" || CurrentSlide == "AUTONREDSELECT" || CurrentSlide == "AUTONBLUESELECT"){
         if (y >= 72 && y <= 204){
