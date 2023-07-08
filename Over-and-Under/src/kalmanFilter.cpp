@@ -2,12 +2,12 @@
 #include "kalmanFilter.h"
 
 double eftl::kalmanFilter::predict(){
-
+    state = F * prevState
 
     dx = prevState.velocity * time_step;
-    state.pos = prevState.pos +dx;
-    state.var = prevState.var + process_var;
-    return state.pos,state.var;
+    pos = prevState.pos +dx;
+    var = prevState.var + process_var;
+    return pos,var;
 
 }
 
@@ -27,7 +27,18 @@ void eftl::kalmanFilter::kalmanIterate(){
         predict_state,predict_state.var= predict();
         new_state,new_state.var = update();
     }
-    
+
+
+}
+
+double eftl::kalmanFilter::multiply(){
+    double mean1,covariance1 = gauss1;
+    double mean2,covariance2 = gauss2;
+
+    double mean = pow(covariance2 * (covariance1 +covariance2),-1)*mean1 + covariance1 * pow((covariance1 + covariance2),-1) * mean2;
+    double covariance = covariance1 * pow(( covariance1 + covariance2),-1) * covariance2;
+
+    return mean,covariance;  
 }
 
 
