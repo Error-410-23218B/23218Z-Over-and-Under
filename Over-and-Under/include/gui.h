@@ -12,5 +12,6 @@ void Handler(short int x, short int y);
     short int AUTONBLUESELECT();
     short int AUTONREDRUN();
     short int AUTONBLUERUN();
+    const char *ChosenPath;
 
 #endif 
