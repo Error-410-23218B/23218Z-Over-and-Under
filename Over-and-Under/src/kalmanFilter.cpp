@@ -1,6 +1,7 @@
 #include "vex.h"
 #include "kalmanFilter.h"
 
+/* I needed to test something lmao
 double eftl::kalmanFilter::predict(){
     state = F * prevState
 
@@ -42,3 +43,4 @@ double eftl::kalmanFilter::multiply(){
 }
 
 
+*/
