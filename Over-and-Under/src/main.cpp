@@ -30,7 +30,7 @@ void handlerCallback(){
 
 int main() {
 //everything gets called from here, this is the only main method call like so
-    Handler(0, 0);
-    Brain.Screen.pressed(handlerCallback);// When the brain is touched, the coordinates of the touch are refered back to the GUI handler;
+    AUTONSELECT;
+    Brain.Screen.released(handlerCallback);// When the brain is touched, the coordinates of the touch are refered back to the GUI handler;
     task tracking(eftl::Odometry::trackingCallback,15);
     }
