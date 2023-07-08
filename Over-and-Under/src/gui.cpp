@@ -3,8 +3,9 @@
 #include "gui.h"
 #include <map>
 std::map<std::string,bool> slidesMap;
-const char *ChosenPath;
 const char *CurrentSlide;
+const char *ChosenPath;
+
 
 short int AUTONBLUERUN(){
     Brain.Screen.drawImageFromFile("AUTONBLUE_RUN.png", 0, 0);
