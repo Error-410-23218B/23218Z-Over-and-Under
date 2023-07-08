@@ -71,5 +71,3 @@ void Handler(int x, int y){
     }
 }
 
-eftl::gui::gui(){
-}

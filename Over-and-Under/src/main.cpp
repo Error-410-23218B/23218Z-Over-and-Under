@@ -23,8 +23,13 @@ void drivercontrol(){
 
 }
 
+void handlerCallback(){
+    Handler(Brain.Screen.xPosition(),Brain.Screen.yPosition());
+}
+
+
 int main() {
 //everything gets called from here, this is the only main method call like so
 
-    Brain.Screen.pressed(Handler(Brain.Screen.xPosition(),Brain.Screen.yPosition()))// When the brain is touched, the coordinates of the touch are refered back to the GUI handler;
+    Brain.Screen.pressed(handlerCallback);// When the brain is touched, the coordinates of the touch are refered back to the GUI handler;
 }

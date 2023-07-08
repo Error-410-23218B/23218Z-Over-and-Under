@@ -8,6 +8,6 @@ class Odometry{
         float encoderDelta;
         float prevEncoder;
 Odometry(float encoder);
-static int tracking();
+static std::array<double,2> tracking();
 };
 }
