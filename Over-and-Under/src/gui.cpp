@@ -3,40 +3,40 @@
 #include "gui.h"
 #include <map>
 std::map<std::string,bool> slidesMap;
-const char *eftl::gui::ChosenPath;
-const char *eftl::gui::CurrentSlide;
+const char *ChosenPath;
+const char *CurrentSlide;
 
-int eftl::gui::AUTONBLUERUN(){
+int AUTONBLUERUN(){
     Brain.Screen.drawImageFromFile("AUTONBLUE_RUN.png", 0, 0);
     CurrentSlide = "AUTONBLUERUN";
     return 0;
 }
 
-int eftl::gui::AUTONREDRUN(){
+int AUTONREDRUN(){
     Brain.Screen.drawImageFromFile("AUTONRED_RUN.png", 0, 0);
     CurrentSlide = "AUTONREDRUN";
     return 0;
 }
 
-int eftl::gui::AUTONBLUESELECT(){
+int AUTONBLUESELECT(){
     Brain.Screen.drawImageFromFile("AUTONBLUE_SELECT.png", 0, 0);
     CurrentSlide = "AUTONBLUESELECT";
     return 0;
 }
 
-int eftl::gui::AUTONREDSELECT(){
+int AUTONREDSELECT(){
     Brain.Screen.drawImageFromFile("AUTONRED_SELECT.png", 0, 0);
     CurrentSlide = "AUTONREDSELECT";
     return 0;
 }
 
-int eftl::gui::AUTONSELECT(){
+ int AUTONSELECT(){
     Brain.Screen.drawImageFromFile("AUTON_SELECT.png", 0, 0);
     CurrentSlide = "AUTONSELECT";
     return 0;
 }
 
-void eftl::gui::Handler(int x, int y){
+void Handler(int x, int y){
 
     if (not sizeof(CurrentSlide) <= 1){
         AUTONSELECT();
