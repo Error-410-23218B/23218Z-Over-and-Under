@@ -11,6 +11,7 @@
 #include "pid.h"
 #include "drivetrain.h"
 #include "gui.h"
+#include "autonomous.h"
 
 using namespace vex;
 
@@ -32,7 +33,5 @@ int main() {
     handlerCallback();
     Brain.Screen.released(handlerCallback);// When the brain is touched, the coordinates of the touch are refered back to the GUI handler;
     task tracking(eftl::Odometry::trackingCallback,15);
-    Competition.autonomous(auton)
-
-    
+    Competition.autonomous(autonomous);
     }

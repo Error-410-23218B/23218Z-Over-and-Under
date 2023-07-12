@@ -4,7 +4,6 @@
 #include "gui.h"
 #include <map>
 
-std::map<std::string,bool> slidesMap;
 std::string CurrentSlide;
 std::string ChosenPath;
  int x;
