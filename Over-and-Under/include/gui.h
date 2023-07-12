@@ -14,5 +14,11 @@ void Handler();
     short int AUTONREDRUN();
     short int AUTONBLUERUN();
     extern std::string ChosenPath;
+    /*
+    REDLEFT
+    BLUELEFT
+    REDRIGHT
+    BLUERIGHT
+    */
 
 #endif 
