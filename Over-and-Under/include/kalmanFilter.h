@@ -1,5 +1,5 @@
 <<<<<<< HEAD
-/*
+
 =======
 //kalmanFilter.h
 >>>>>>> 30893a4c405289280efb41710489d032eb29b238
@@ -10,7 +10,7 @@ namespace eftl{
         double pos;
         double var;
 
-    }prevState,predict_state,new_state;
+    }prevState,predict_state
     
     
     class kalmanFilter{
@@ -33,6 +33,9 @@ namespace eftl{
                 double dx;
                 double gauss1;
                 double gauss2;
+                double residual;
+                double kalman_gain;
+                double new_var;
 
              
  
@@ -44,4 +47,4 @@ namespace eftl{
 
     };
 }
-*/
+

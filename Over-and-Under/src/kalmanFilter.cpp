@@ -1,7 +1,7 @@
 #include "vex.h"
 #include "kalmanFilter.h"
 
-/* I needed to test something lmao
+
 double eftl::kalmanFilter::predict(){
     state = F * prevState
 
@@ -14,12 +14,11 @@ double eftl::kalmanFilter::predict(){
 
 
 double eftl::kalmanFilter::update(){
-    double residual;
-    double kalman_gain;
+    
     residual = measurement - state;
     kalman_gain =  var/(var+measurement_var);
     new_state = state + kalman_gain;
-    new_state.var = (1- kalman_gain) * state.var;
+    new_var = (1- kalman_gain) * state.var;
     return new_state,new_var
 }
 
@@ -43,4 +42,4 @@ double eftl::kalmanFilter::multiply(){
 }
 
 
-*/
+
