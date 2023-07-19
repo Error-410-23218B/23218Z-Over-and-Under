@@ -1,4 +1,5 @@
 //gui.h
+#include <string>
 #pragma once
 #ifndef gui_h
 
