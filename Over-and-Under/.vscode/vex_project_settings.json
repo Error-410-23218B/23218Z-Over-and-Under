@@ -12,7 +12,9 @@
 		"slot": 5,
 		"sdkVersion": "V5_20220726_10_00_00",
 		"cpp": {
-			"includePath": []
+			"includePath": [
+				"C:\\Users\\Administrator\\Documents\\23218Z\\sdk\\vexv5\\gcc\\include/*"
+			]
 		}
 	}
 }

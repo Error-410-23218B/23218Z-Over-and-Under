@@ -28,6 +28,14 @@ namespace eftl{
         double predict_var;
         double kalman_gain;
         double residual;
+        double variance;
+        double F[3][3] = {{1,deltaTime,0.5*pow(deltaTime,2)},
+                          {0,1,deltaTime},
+                          {0,0,1}}
+        double Q[4][4]={{0,0.001,0,0},
+                        {0.001,0.001,0,0},
+                        {0,0,0,0.001},
+                        {0,0,0.001,0.001}}
         kalmanFilter();
         double predict();
         double update();
