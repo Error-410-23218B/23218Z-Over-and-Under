@@ -1,6 +1,7 @@
 #include "vex.h"
 #include "kalmanFilter.h"
 
+using namespace vex;
 
 double eftl::kalmanFilter::predict(){
     state = F * prevState
