@@ -47,6 +47,39 @@ def sgn (num):
         return 1
     else:
         return -1
+using_rotation = False
+    
+    
+
+def turn_to_pt_step(currentPos,currentHeading,targetPt):
+
+    return linearVel,turnVel
+
+currentPos = [0, 0]
+targetPt = [7, 5]
+currentHeading = 0
+numOfFrames = 200
+
+pi = np.pi
+fig = plt.figure()
+
+
+def find_min_angle (absTargetAngle, currentHeading):
+
+    minAngle = absTargetAngle - currentHeading
+
+    if minAngle > 180 or minAngle < -180:
+        minAngle = -1 * sgn(minAngle) * (360 - abs(minAngle))
+
+    print ('The minimum angle between {}(absTargetHeading) and {}(currentHeading) is {}.'.format(absTargetAngle, currentHeading, minAngle))
+    add_complicated_line([[0, 0], [5*np.cos(absTargetAngle*np.pi/180), 5*np.sin(absTargetAngle*np.pi/180)]], '--', 'red', 'absTargetHeading')
+    add_complicated_line([[0, 0], [5*np.cos(currentHeading*np.pi/180), 5*np.sin(currentHeading*np.pi/180)]], '--', 'blue', 'currentHeading')
+    plt.plot(5*np.cos(absTargetAngle*np.pi/180), 5*np.sin(absTargetAngle*np.pi/180), '.', markersize=15, color='red')
+    plt.plot(5*np.cos(currentHeading*np.pi/180), 5*np.sin(currentHeading*np.pi/180), '.', markersize=15, color='blue')
+    plt.axis('scaled')
+    plt.legend()
+    plt.show()
+    
     
 def line_circle_intersection(currentPos,pt1,pt2,lookAheadDis):
     currentX = currentPos[0]
@@ -236,7 +269,9 @@ def goal_pt_search (path, currentPos, lookAheadDis, lastFoundIndex) :
     if goalPt != [None, None] :
         plt.plot (goalPt[0], goalPt[1], '.', markersize=15, color='red', label='goal point')
         add_complicated_line([currentPos, goalPt], '-', 'black', 'look ahead distance')
-    
+        print('Goal point found at {}'.format(goalPt))
+    else:
+        print('No intersection found!')
     path_ax.legend()
     
 # call the function to see the results
