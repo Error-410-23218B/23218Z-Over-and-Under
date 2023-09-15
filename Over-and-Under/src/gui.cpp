@@ -76,10 +76,11 @@ switch(guiState){
         else{
         AUTONSELECT();
     }
-
+void switchGUI()}{
+    switch ()
+    {
+        case autonselect:AUTONREDSELECT();
+        case autonredselect:ChosenPath = "REDLEFT"; AUTONREDRUN();
+        case autonblueselect:ChosenPath = "REDLEFT"; AUTONBLUERUN();
     }
 }
-
-
-    
-
