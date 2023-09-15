@@ -5,12 +5,19 @@
 #include <map>
 
 std::string CurrentSlide;
+<<<<<<< HEAD
  int x;
  int y;
  enum ChosenPath{redleft};
  enum GUIState{autonselect, autonredselect,autonblueselect,autonredrun,autonbluerun};
 enum GUIState guiState; 
 enum ChosenPath chosenpath;
+=======
+std::string ChosenPath;
+
+ enum GUIState{autonselect, autonredselect,autonblueselect}
+
+>>>>>>> b2062c2292b5adfe4e8145f2cae0fb9e88d254da
 void xyReset(){
    x = 0;
    y = 0;
@@ -49,6 +56,7 @@ void AUTONSELECT(){
     
 }
 
+<<<<<<< HEAD
 void switchGUI(){
     switch (guiState)
     {
@@ -66,6 +74,18 @@ void Handler(){
     
 switch(guiState){
     case autonselect || autonredselect || autonblueselect: 
+=======
+void switchGUI(int x, int y){
+    switch ()
+    {
+        case autonselect:AUTONREDSELECT();
+        case autonredselect:ChosenPath = "REDLEFT"; AUTONREDRUN();
+        case autonblueselect:ChosenPath = "REDLEFT"; AUTONBLUERUN();
+    }
+}
+
+if (CurrentSlide == "AUTONSELECT" || CurrentSlide == "AUTONREDSELECT" || CurrentSlide == "AUTONBLUESELECT"){
+>>>>>>> b2062c2292b5adfe4e8145f2cae0fb9e88d254da
     if (y >= 72 && y <= 204){
         if (x >= 0 && x < 240){
          switchGUI();
@@ -75,12 +95,15 @@ switch(guiState){
         }
         else{
         AUTONSELECT();
+<<<<<<< HEAD
     }
-void switchGUI()}{
-    switch ()
-    {
-        case autonselect:AUTONREDSELECT();
-        case autonredselect:ChosenPath = "REDLEFT"; AUTONREDRUN();
-        case autonblueselect:ChosenPath = "REDLEFT"; AUTONBLUERUN();
+
     }
 }
+
+
+    
+
+=======
+    }
+>>>>>>> b2062c2292b5adfe4e8145f2cae0fb9e88d254da
