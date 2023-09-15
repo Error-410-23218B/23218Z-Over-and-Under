@@ -6,8 +6,6 @@
 
 std::string CurrentSlide;
 std::string ChosenPath;
- int x;
- int y;
 
  enum GUIState{autonselect, autonredselect,autonblueselect}
 
@@ -49,10 +47,14 @@ void AUTONSELECT(){
     
 }
 
-void Handler(){
-    x = Brain.Screen.xPosition();
-    y = Brain.Screen.yPosition();
-    
+void switchGUI(int x, int y){
+    switch ()
+    {
+        case autonselect:AUTONREDSELECT();
+        case autonredselect:ChosenPath = "REDLEFT"; AUTONREDRUN();
+        case autonblueselect:ChosenPath = "REDLEFT"; AUTONBLUERUN();
+    }
+}
 
 if (CurrentSlide == "AUTONSELECT" || CurrentSlide == "AUTONREDSELECT" || CurrentSlide == "AUTONBLUESELECT"){
     if (y >= 72 && y <= 204){
@@ -65,11 +67,3 @@ if (CurrentSlide == "AUTONSELECT" || CurrentSlide == "AUTONREDSELECT" || Current
     }else{
         AUTONSELECT();
     }
-void switchGUI()}{
-    switch ()
-    {
-        case autonselect:AUTONREDSELECT();
-        case autonredselect:ChosenPath = "REDLEFT"; AUTONREDRUN();
-        case autonblueselect:ChosenPath = "REDLEFT"; AUTONBLUERUN();
-    }
-}
