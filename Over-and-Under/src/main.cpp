@@ -22,15 +22,18 @@ using namespace vex;
 
 void drivercontrol(){
 
-
 }
 
 
+
+void handlerCallback(){
+    Handler();
+}
+
 int main() {
 //everything gets called from here, this is the only main method call like so
-    Brain.Screen.released(Handler);// When the brain is touched, the coordinates of the touch are refered back to the GUI handler;
+    handlerCallback();
+    Brain.Screen.released(handlerCallback);// When the brain is touched, the coordinates of the touch are refered back to the GUI handler;
     task tracking(eftl::Odometry::trackingCallback,15);
     Competition.autonomous(autonomous);
-    Competition.drivercontrol(drivercontrol);
-    task GUIthread();
     }

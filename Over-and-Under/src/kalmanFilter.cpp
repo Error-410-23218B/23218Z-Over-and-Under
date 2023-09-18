@@ -1,5 +1,7 @@
-
-/*
+#include "vex.h"
+#include "kalmanFilter.h"
+#include "math.h"
+#include <array>
 
 eftl::kalmanFilter::kalmanFilter() {
     predict_state,predict_var =  predict();
@@ -33,4 +35,3 @@ double eftl::kalmanFilter::multiply(double gauss,double gauss2){
     double covariance = covariance1 * pow((covariance1 + covariance2),-1) * covariance2;
     return mean,covariance 
 }
-*/

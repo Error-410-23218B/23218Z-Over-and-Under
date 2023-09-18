@@ -6,6 +6,7 @@
 
 std::string CurrentSlide;
 <<<<<<< HEAD
+<<<<<<< HEAD
  int x;
  int y;
  enum ChosenPath{redleft};
@@ -18,6 +19,14 @@ std::string ChosenPath;
  enum GUIState{autonselect, autonredselect,autonblueselect}
 
 >>>>>>> b2062c2292b5adfe4e8145f2cae0fb9e88d254da
+=======
+std::string ChosenPath;
+ int x;
+ int y;
+
+ enum GUIState{autonselect, autonredselect,autonblueselect}
+
+>>>>>>> parent of 5385ee2 (enumeration fixed, compiled)
 void xyReset(){
    x = 0;
    y = 0;
@@ -25,37 +34,38 @@ void xyReset(){
 
 void AUTONBLUERUN(){
     Brain.Screen.drawImageFromFile("AUTONBLUE_RUN.png", 0, 0);
-     guiState = autonbluerun;
+    CurrentSlide = "AUTONBLUERUN";
     xyReset();
     
 }
 
  void AUTONREDRUN(){
     Brain.Screen.drawImageFromFile("AUTONRED_RUN.png", 0, 0);
-    guiState = autonredrun;
+    CurrentSlide = "AUTONREDRUN";
     xyReset();
 }
 
  void  AUTONBLUESELECT(){
     Brain.Screen.drawImageFromFile("AUTONBLUE_SELECT.png", 0, 0);
-        guiState = autonblueselect;
-        xyReset();
+    CurrentSlide = "AUTONBLUESELECT";
+    xyReset();
 }
 
 void AUTONREDSELECT(){
     Brain.Screen.drawImageFromFile("AUTONRED_SELECT.png", 0, 0);
-    guiState = autonredselect;
+    CurrentSlide = "AUTONREDSELECT";
     xyReset();
     
 }
 
 void AUTONSELECT(){
     Brain.Screen.drawImageFromFile("AUTON_SELECT.png", 0, 0);
-    guiState = autonselect;
+    CurrentSlide = "AUTONSELECT";
     xyReset();
     
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 void switchGUI(){
     switch (guiState)
@@ -67,11 +77,13 @@ void switchGUI(){
 }
 
 
+=======
+>>>>>>> parent of 5385ee2 (enumeration fixed, compiled)
 void Handler(){
-    guiState = autonselect;
     x = Brain.Screen.xPosition();
     y = Brain.Screen.yPosition();
     
+<<<<<<< HEAD
 switch(guiState){
     case autonselect || autonredselect || autonblueselect: 
 =======
@@ -86,6 +98,10 @@ void switchGUI(int x, int y){
 
 if (CurrentSlide == "AUTONSELECT" || CurrentSlide == "AUTONREDSELECT" || CurrentSlide == "AUTONBLUESELECT"){
 >>>>>>> b2062c2292b5adfe4e8145f2cae0fb9e88d254da
+=======
+
+if (CurrentSlide == "AUTONSELECT" || CurrentSlide == "AUTONREDSELECT" || CurrentSlide == "AUTONBLUESELECT"){
+>>>>>>> parent of 5385ee2 (enumeration fixed, compiled)
     if (y >= 72 && y <= 204){
         if (x >= 0 && x < 240){
          switchGUI();
@@ -93,13 +109,19 @@ if (CurrentSlide == "AUTONSELECT" || CurrentSlide == "AUTONREDSELECT" || Current
                     switchGUI();
             }
         }
-        else{
+    }else{
         AUTONSELECT();
 <<<<<<< HEAD
     }
-
+void switchGUI()}{
+    switch ()
+    {
+        case autonselect:AUTONREDSELECT();
+        case autonredselect:ChosenPath = "REDLEFT"; AUTONREDRUN();
+        case autonblueselect:ChosenPath = "REDLEFT"; AUTONBLUERUN();
     }
 }
+<<<<<<< HEAD
 
 
     
@@ -107,3 +129,5 @@ if (CurrentSlide == "AUTONSELECT" || CurrentSlide == "AUTONREDSELECT" || Current
 =======
     }
 >>>>>>> b2062c2292b5adfe4e8145f2cae0fb9e88d254da
+=======
+>>>>>>> parent of 5385ee2 (enumeration fixed, compiled)

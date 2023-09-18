@@ -9,12 +9,11 @@
 void Handler();
 
 
-    void AUTONSELECT();
-    void AUTONREDSELECT();
-    void AUTONBLUESELECT();
-    void AUTONREDRUN();
-    void AUTONBLUERUN();
-    void Handler();
+    short int AUTONSELECT();
+    short int AUTONREDSELECT();
+    short int AUTONBLUESELECT();
+    short int AUTONREDRUN();
+    short int AUTONBLUERUN();
     extern std::string ChosenPath;
     /*
     REDLEFT
