@@ -276,3 +276,4 @@ def goal_pt_search (path, currentPos, lookAheadDis, lastFoundIndex) :
     
 # call the function to see the results
 goal_pt_search (path1, [1, 2.2], 0.8, 3)
+

@@ -21,7 +21,9 @@ using namespace vex;
 
 
 void drivercontrol(){
-
+    Drivetrain.setVelocity(100,percent);
+    puncher.setVelocity(100);
+    climber.setVelocity(100);
 }
 
 
@@ -36,4 +38,6 @@ int main() {
     Brain.Screen.released(handlerCallback);// When the brain is touched, the coordinates of the touch are refered back to the GUI handler;
     task tracking(eftl::Odometry::trackingCallback,15);
     Competition.autonomous(autonomous);
+    Competition.drivecontrol(drivercontrol);
+     
     }

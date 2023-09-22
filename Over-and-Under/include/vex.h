@@ -22,13 +22,14 @@ extern drivetrain Drivetrain;
 extern encoder FrontEncoderA;
 extern encoder BackEncoder;
 extern encoder FrontEncoderB;
-extern motor  leftMotorA;
-extern motor  leftMotorB;
-extern motor  rightMotorA;
-extern motor  rightMotorB;
+extern motor leftMotorA;
+extern motor leftMotorB;
+extern motor rightMotorA;
+extern motor rightMotorB;
 extern motor_group DrivetrainLeft;
 extern motor_group DrivetrainRight;
-
+extern motor puncher;
+extern motor climber;
 
 
 

@@ -16,7 +16,7 @@ void basicAuton(){
     
 }
 void shoot(){
-
+    
 }
 void skillAuton(){
     shoot();
