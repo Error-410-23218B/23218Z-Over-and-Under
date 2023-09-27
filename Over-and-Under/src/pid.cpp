@@ -1,13 +1,9 @@
 // pid.cpp
 #include "pid.h"
 
-eftl::PIDController::PIDController(double ikP, double ikI, double ikD, double ikF)
+eftl::PIDController::PIDController(double ikP, double ikI, double ikD, double ikF):
+kP(ikp),kI(ikI),kD(ikD),kF(ikF)//member initialisation list.
 {
-  // Constructor passes argument values into class variables
-  kP = ikP;
-  kI = ikI;
-  kD = ikD;
-  kF = ikF;
 }
 
 double eftl::PIDController::step(double isetpoint, double process_variable)

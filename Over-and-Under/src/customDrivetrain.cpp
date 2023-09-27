@@ -2,10 +2,10 @@
 #include "vex.h"
 #include "pid.h"
 #include "drivetrain.h"
-#include "math.h"
+#include <math>
 #include "stdlib.h"
 #include <iostream>
-
+#define extern M_PI
 using namespace vex;
 const double pi = 3.1415926535;
 
@@ -96,4 +96,15 @@ void eftl::customDrivetrain::turnFor(vex::turnType turnVar, double turnAmount)
 
 void eftl::customDrivetrain::odometricMotion()
 {
+    double distance;
+    double angle;
+    array<double,2> position Odometry::tracking();
+    distance = sqrt(pow(position[0],2)+pow(position[1],2));
+    
+
+
+
+
+
+
 }

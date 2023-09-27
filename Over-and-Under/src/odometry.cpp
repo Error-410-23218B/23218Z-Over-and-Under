@@ -21,7 +21,7 @@
     eftl::Odometry EncoderRight(2.0);
     eftl::Odometry EncoderBack(3.0);
 
-    array<double, 2> eftl::Odometry::tracking()
+    array<double,2> eftl::Odometry::tracking()
     {
 
         // Tracking Algorithm, calculates absoulute position of robot on field.
