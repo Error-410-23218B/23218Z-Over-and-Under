@@ -7,15 +7,20 @@ brain Brain;
 competition Competition;
 
 controller Controller1 = controller(primary);
-motor leftMotorA = motor(PORT19, ratio18_1, true);
-motor leftMotorB = motor(PORT20, ratio18_1, true);
-motor_group LeftDriveSmart = motor_group(leftMotorA, leftMotorB);
-motor rightMotorA = motor(PORT17, ratio18_1, false);
-motor rightMotorB = motor(PORT18, ratio18_1, false);
-motor puncher = motor(PORT6,ratio18_1,false);
+motor leftMotorA = motor(PORT3, ratio6_1, true);
+motor leftMotorB = motor(PORT4, ratio6_1, true);
+motor leftMotorC = motor(PORT5, ratio6_1, true);
+motor_group LeftDriveSmart = motor_group(leftMotorA, leftMotorB,leftMotorC);
+motor rightMotorA = motor(PORT6, ratio6_1, false);
+motor rightMotorB = motor(PORT7, ratio6_1, false);
+motor rightMotorC = motor(PORT8, ratio6_1, false);
+digital_out DigitalOutA = digital_out(Brain.ThreeWirePort.A);
+digital_out DigitalOutB = digital_out(Brain.ThreeWirePort.B);
+motor_group RightDriveSmart = motor_group(rightMotorA, rightMotorB,rightMotorC);
+drivetrain Drivetrain = drivetrain(LeftDriveSmart, RightDriveSmart, 319.19, 295, 40, mm, 1);
+motor puncher = motor(PORT9,ratio18_1,false);
 motor climber = motor(PORT10,ratio18_1,false);
 motor_group RightDriveSmart = motor_group(rightMotorA, rightMotorB);
-drivetrain Drivetrain = drivetrain(LeftDriveSmart, RightDriveSmart, 478.78, 435, 288, mm, 1);
 bool DrivetrainNeedsToBeStopped_Controller1 = true;
 bool Controller1RightShoulderControlMotorsStopped = true;
 

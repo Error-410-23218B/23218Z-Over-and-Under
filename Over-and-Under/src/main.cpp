@@ -24,6 +24,10 @@ void drivercontrol(){
     Drivetrain.setDriveVelocity(100,percent);
     puncher.setVelocity(100,percent);
     climber.setVelocity(100,percent);
+      if(Controller1.ButtonR1.pressing()){
+            DigitalOutA.set(true);
+            DigitalOutB.set(true);
+      }
 }
 
 

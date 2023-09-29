@@ -7,11 +7,5 @@
 
 void autonomous();
 
-extern enum AutonState{
-    REDBOTSTART,
-    BLUEBOTSTART,
-    REDTOPSTART,
-    BLUETOPSTART
-}
 
 #endif

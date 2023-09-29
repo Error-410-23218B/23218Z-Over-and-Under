@@ -1,4 +1,5 @@
 //vex.h
+#pragma once 
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -30,6 +31,8 @@ extern motor_group DrivetrainLeft;
 extern motor_group DrivetrainRight;
 extern motor puncher;
 extern motor climber;
+extern digital_out DigitalOutA;
+extern digital_out DigitalOutB;
 
 
 

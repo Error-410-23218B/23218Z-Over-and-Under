@@ -7,13 +7,8 @@
 
 
 void Handler();
+void AUTONSELECT();
 
-
-    short int AUTONSELECT();
-    short int AUTONREDSELECT();
-    short int AUTONBLUESELECT();
-    short int AUTONREDRUN();
-    short int AUTONBLUERUN();
     extern std::string ChosenPath;
     /*
     REDLEFT
@@ -21,5 +16,14 @@ void Handler();
     REDRIGHT
     BLUERIGHT
     */
+extern enum class GUIState
+{
+    autonselect,
+    autonredselect,
+    autonblueselect,
+    autonredrun,
+    autonbluerun
+};
+
 
 #endif 

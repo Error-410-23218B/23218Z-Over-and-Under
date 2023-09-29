@@ -7,26 +7,19 @@
 std::string CurrentSlide;
 int x;
 int y;
+
+//Deprecated? Will use as subpar for now.
 enum class ChosenPath
 {
-    redleft
+    redleft,
+    blueleft,
+    redright,
+    blueright
 };
-enum class GUIState
-{
-    autonselect,
-    autonredselect,
-    autonblueselect,
-    autonredrun,
-    autonbluerun
-};
-
-
-
-
 
 enum GUIState guiState;
-enum ChosenPath chosenpath;
-void xyReset()
+ChosenPath chosenpath;
+inline void xyReset()
 {
     x = 0;
     y = 0;
@@ -58,7 +51,6 @@ void Handler()
     guiState = GUIState::autonselect;
     x = Brain.Screen.xPosition();
     y = Brain.Screen.yPosition();
-
     switch (guiState)
     {
     case GUIState::autonselect || GUIState::autonredselect || GUIState::autonblueselect:
@@ -77,19 +69,22 @@ void Handler()
         {
             AUTONSELECT();
         }
-        void switchGUI()
+        void switchGUI();
     }
     {
         switch (guiState)
         {
         case GUIState::autonselect:
-            AUTONSELECT("AUTONRED_SELECT.png",GUIState::autonredselect);    
+            AUTONSELECT("AUTONRED_SELECT.png",GUIState::autonredselect);  
+            basicAuton(guiState);
         case GUIState::autonredselect:
-            ChosenPath = "REDLEFT";
+            chosenpath = ChosenPath::redleft;
             AUTONSELECT("AUTONRED_RUN.png",GUIState::autonredrun);
+            basicAuton(guiState);
         case GUIState::autonblueselect:
-            ChosenPath = "REDLEFT";
+            chosenpath = ChosenPath::blueleft;
             AUTONSELECT("AUTONBLUE_RUN.png",GUIState::autonbluerun);
+            basicAuton(guiState);
             }
     }
     
