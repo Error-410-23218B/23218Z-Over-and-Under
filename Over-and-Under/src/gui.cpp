@@ -7,6 +7,58 @@
 std::string CurrentSlide;
 int x;
 int y;
+class BaseScreen{
+    protected:
+        int x;
+        int y;
+        std::string FilePath;
+        BaseScreen* LastScreen;
+    public:
+            BaseScreen(std::string filepath,int x,int y):
+            FilePath(filepath),x(x),y(y)
+            {}
+            void loadScreen(){
+                Brain.Screen.clearScreen();
+                Brain.Screen.drawImageFromFile(FilePath,x,y);
+            }
+
+}
+
+class BackgroundScreen : public BaseScreen {
+    protected:
+
+    public:
+            BackgroundScreen(std::string filepath):BaseScreen(filepath,0,0){}
+}
+
+class Button{
+    protected:
+            int xlength;
+            int yheight;
+            int xposition;
+            int yposition;
+            vex::color colour;
+    public:
+            template<class T>
+            Button(int xsize,int ysize, int xpos, int ypos,vex::color color,(*func)()):
+            xlength(xsize),yheight(ysize),xposition(xpos),yposition(ypos),colour(color)
+            {
+                Brain.Screen.setFillColor(colour);  
+                Brain.Screen.drawRectangle(xlength,yheight,xposition,yposition);
+                if (Brain.Screen.isTouched()>xposition && Brain.Screen.isTouched()<(xposition+xlength) && Brain.Screen.isTouched()>yposition && Brain.Screen.isTouched()<yposition+yheight){
+
+                }
+            }
+}
+
+class Text{
+
+}
+
+
+
+
+
 
 //Deprecated? Will use as subpar for now.
 enum class ChosenPath
@@ -46,6 +98,7 @@ void switchGUI()
     }
 }
 
+
 void Handler()
 {
     guiState = GUIState::autonselect;
@@ -62,30 +115,18 @@ void Handler()
             }
             else if (x <= 480)
             {
-                switchGUI();
+                
             }
         }
-        else
+        else{
         {
             AUTONSELECT();
         }
         void switchGUI();
-    }
-    {
-        switch (guiState)
-        {
-        case GUIState::autonselect:
-            AUTONSELECT("AUTONRED_SELECT.png",GUIState::autonredselect);  
-            basicAuton(guiState);
-        case GUIState::autonredselect:
-            chosenpath = ChosenPath::redleft;
-            AUTONSELECT("AUTONRED_RUN.png",GUIState::autonredrun);
-            basicAuton(guiState);
-        case GUIState::autonblueselect:
-            chosenpath = ChosenPath::blueleft;
-            AUTONSELECT("AUTONBLUE_RUN.png",GUIState::autonbluerun);
-            basicAuton(guiState);
             }
     }
+    
+        
+
     
 }

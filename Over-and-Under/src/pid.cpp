@@ -3,8 +3,7 @@
 
 eftl::PIDController::PIDController(double ikP, double ikI, double ikD, double ikF):
 kP(ikp),kI(ikI),kD(ikD),kF(ikF)//member initialisation list.
-{
-}
+{}
 
 double eftl::PIDController::step(double isetpoint, double process_variable)
 {
