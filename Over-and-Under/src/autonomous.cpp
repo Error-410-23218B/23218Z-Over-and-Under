@@ -11,7 +11,7 @@ void autonomous(){
 
 
 
-void basicAuton(enum AutonState auton){
+void basicAuton(){
     Drivetrain.driveFor(100,mm);
     Drivetrain.turnFor(right,90,degrees);
     Drivetrain.driveFor(forward,30,mm);
@@ -20,9 +20,9 @@ void basicAuton(enum AutonState auton){
 
     switch (auton)
     {
-    case AutonState::REDBOTSTART:
+    case GUIState::
        inline void redbottomstart = [](){
-            // some code
+            // some code  
         }
         break;
     case AutonState::REDTOPSTART:

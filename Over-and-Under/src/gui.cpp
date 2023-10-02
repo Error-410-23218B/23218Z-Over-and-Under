@@ -39,20 +39,31 @@ class Button{
             int yposition;
             vex::color colour;
     public:
-            template<class T>
-            Button(int xsize,int ysize, int xpos, int ypos,vex::color color,(*func)()):
+            Button(int xsize,int ysize, int xpos, int ypos,vex::color color,void(*func)(void)):
             xlength(xsize),yheight(ysize),xposition(xpos),yposition(ypos),colour(color)
             {
+                int TouchPos = Brain.Screen.isTouched();
                 Brain.Screen.setFillColor(colour);  
                 Brain.Screen.drawRectangle(xlength,yheight,xposition,yposition);
-                if (Brain.Screen.isTouched()>xposition && Brain.Screen.isTouched()<(xposition+xlength) && Brain.Screen.isTouched()>yposition && Brain.Screen.isTouched()<yposition+yheight){
-
+                
+                if (TouchPos>xposition && TouchPos<(xposition+xlength) && TouchPos>yposition && TouchPos<(yposition+yheight)){
+                       func(void); 
                 }
             }
 }
 
 class Text{
+    public:
+    std::string Text;
+    vex::color Colour;
+    int fontSize;
+        Text(std::string txtInput,vex::color color, int fontS):Text(txtInput),Colour(color),fontSize(fontS){
 
+           Brain.Screen.setFillColour(Colour); 
+            Brain.Screen.print(Text);
+
+
+        }   
 }
 
 
