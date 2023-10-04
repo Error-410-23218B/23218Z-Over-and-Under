@@ -4,9 +4,9 @@
 #include "gui.h"
 #include <map>
 
-std::string CurrentSlide;
 int x;
 int y;
+
 class BaseScreen{
     protected:
         int x;
@@ -25,8 +25,6 @@ class BaseScreen{
 }
 
 class BackgroundScreen : public BaseScreen {
-    protected:
-
     public:
             BackgroundScreen(std::string filepath):BaseScreen(filepath,0,0){}
 }
@@ -39,6 +37,7 @@ class Button{
             int yposition;
             vex::color colour;
     public:
+
             Button(int xsize,int ysize, int xpos, int ypos,vex::color color,void(*func)(void)):
             xlength(xsize),yheight(ysize),xposition(xpos),yposition(ypos),colour(color)
             {
@@ -50,19 +49,17 @@ class Button{
                        func(void); 
                 }
             }
+            
 }
 
 class Text{
     public:
-    std::string Text;
+    std::string textInput;
     vex::color Colour;
     int fontSize;
-        Text(std::string txtInput,vex::color color, int fontS):Text(txtInput),Colour(color),fontSize(fontS){
-
+        Text(std::string txtInput,vex::color color, int fontS):textInput(txtInput),Colour(color),fontSize(fontS){
            Brain.Screen.setFillColour(Colour); 
-            Brain.Screen.print(Text);
-
-
+            Brain.Screen.print(textInput);
         }   
 }
 
@@ -136,8 +133,4 @@ void Handler()
         void switchGUI();
             }
     }
-    
-        
-
-    
 }

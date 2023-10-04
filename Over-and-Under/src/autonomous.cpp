@@ -6,7 +6,7 @@
 
 
 void autonomous(){
-    basicAuton()
+    basicAuton();
 }
 
 
@@ -36,7 +36,7 @@ void basicAuton(){
         }
     case AutonState::BLUETOPSTART:
           inline void redtopstart = [](){
-
+                
         }     
     default:
         break;
