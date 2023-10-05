@@ -24,23 +24,20 @@ void drivercontrol(){
     Drivetrain.setDriveVelocity(100,percent);
     puncher.setVelocity(100,percent);
     climber.setVelocity(100,percent);
-
-      
+    Controller1.ButtonR1.pressed(pneumaticsT);
+    Controller1.ButtonR2.pressed(pneumaticsOff);
 }
 
+void pneumaticsT(){DigitalOutG.set(true);DigitalOutH.set(true);}
+void pneumaticsOff(){DigitalOutG.set(false);DigitalOutH.set(false);}
 
 
-void handlerCallback(){
-    Handler();
-}
 
 int main() {
-    task rc_auto_loop_function_Controller1(rc_auto_loop_function_Controller1);
-//everything gets called from here, this is the only main method call like so
-    handlerCallback();
-    Brain.Screen.released(handlerCallback);// When the brain is touched, the coordinates of the touch are refered back to the GUI handler;
-    task tracking(eftl::Odometry::trackingCallback,15);
+    vexcodeInit();
+    // task tracking(eftl::Odometry::trackingCallback,15);
+    task GUI(GUIHandler);
     Competition.autonomous(autonomous);
     Competition.drivercontrol(drivercontrol);
-     return 1;s
+     return 0;
     }

@@ -7,70 +7,57 @@
 std::string CurrentSlide;
 int x;
 int y;
-class BaseScreen{
-    protected:
-        int x;
-        int y;
-        std::string FilePath;
-        BaseScreen* LastScreen;
-    public:
-            BaseScreen(std::string filepath,int x,int y):
-            FilePath(filepath),x(x),y(y)
-            {}
-            void loadScreen(){
-                Brain.Screen.clearScreen();
-                Brain.Screen.drawImageFromFile(FilePath,x,y);
-            }
+
+BaseScreen::BaseScreen(std::string filepath, int x, int y,BaseScreen* lastScreen = NULL,BaseScreen* nextScreen = NULL) : FilePath(filepath), x(x), y(y), LastScreen(lastScreen),NextScreen(nextScreen)
+{
+}
+
+void BaseScreen::loadScreen()
+{
+    Brain.Screen.clearScreen();
+    Brain.Screen.drawImageFromFile(FilePath.c_str(), x, y);
+}
+
+BackgroundScreen::BackgroundScreen(std::string filepath) : BaseScreen(filepath, 0, 0) {}
+
+Button::Button(int xsize, int ysize, int xpos, int ypos, vex::color color, void (*func)(void)) : xlength(xsize), yheight(ysize), xposition(xpos), yposition(ypos), colour(color)
+{
+    int xTouch = Brain.Screen.xPosition();
+    int yTouch = Brain.Screen.yPosition();
+
+    Brain.Screen.setFillColor(colour);
+    Brain.Screen.drawRectangle(xlength, yheight, xposition, yposition);
+
+    if (xTouch > xposition && xTouch < (xposition + xlength) && yTouch > yposition && yTouch < (yposition + yheight))
+    {
+        func();
+    }
+}
+
+Text::Text(std::string txtInput, vex::color color, vex::fontType fontParam) : textInput(txtInput), Colour(color),fontFormat(fontParam)
+{
+    Brain.Screen.setFont(fontFormat);
+    Brain.Screen.setFillColor(Colour);
+    Brain.Screen.print(textInput);
 
 }
 
-class BackgroundScreen : public BaseScreen {
-    protected:
-
-    public:
-            BackgroundScreen(std::string filepath):BaseScreen(filepath,0,0){}
+void buttonTrial(){
+    Drivetrain.setDriveVelocity(100,percent);
 }
 
-class Button{
-    protected:
-            int xlength;
-            int yheight;
-            int xposition;
-            int yposition;
-            vex::color colour;
-    public:
-            Button(int xsize,int ysize, int xpos, int ypos,vex::color color,void(*func)(void)):
-            xlength(xsize),yheight(ysize),xposition(xpos),yposition(ypos),colour(color)
-            {
-                int TouchPos = Brain.Screen.isTouched();
-                Brain.Screen.setFillColor(colour);  
-                Brain.Screen.drawRectangle(xlength,yheight,xposition,yposition);
-                
-                if (TouchPos>xposition && TouchPos<(xposition+xlength) && TouchPos>yposition && TouchPos<(yposition+yheight)){
-                       func(void); 
-                }
-            }
-}
-
-class Text{
-    public:
-    std::string Text;
-    vex::color Colour;
-    int fontSize;
-        Text(std::string txtInput,vex::color color, int fontS):Text(txtInput),Colour(color),fontSize(fontS){
-
-           Brain.Screen.setFillColour(Colour); 
-            Brain.Screen.print(Text);
-
-
-        }   
+int GUIHandler()
+{
+    //Object creation happens here, runs on seperate task?
+    Text title = Text("This is a test",vex::color::black,vex::fontType::mono30);
+    Button autonSkills = Button(20,30,50,40,vex::color::blue,buttonTrial);
+    BackgroundScreen Screen1 = BackgroundScreen("test/test/png");
+    return 0;
 }
 
 
 
-
-
-
+/*
 //Deprecated? Will use as subpar for now.
 enum class ChosenPath
 {
@@ -126,7 +113,7 @@ void Handler()
             }
             else if (x <= 480)
             {
-                
+
             }
         }
         else{
@@ -136,8 +123,9 @@ void Handler()
         void switchGUI();
             }
     }
-    
-        
 
-    
+
+
+
 }
+*/

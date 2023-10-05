@@ -6,24 +6,48 @@
 #define gui_h
 
 
-void Handler();
-void AUTONSELECT();
-
-    extern std::string ChosenPath;
-    /*
-    REDLEFT
-    BLUELEFT
-    REDRIGHT
-    BLUERIGHT
-    */
-extern enum class GUIState
+class Button
 {
-    autonselect,
-    autonredselect,
-    autonblueselect,
-    autonredrun,
-    autonbluerun
+protected:
+    int xlength;
+    int yheight;
+    int xposition;
+    int yposition;
+    vex::color colour;
+
+public:
+    Button(int xsize, int ysize, int xpos, int ypos, vex::color color, void (*func)(void));
+
 };
 
+class BaseScreen
+{
+protected:
+    int x;
+    int y;
+    std::string FilePath;
+    BaseScreen *LastScreen;
+    BaseScreen *NextScreen;
+public:
+    BaseScreen(std::string filepath, int x, int y,BaseScreen* lastScreen,BaseScreen* nextScreen);
+    void loadScreen();
+};
 
+class BackgroundScreen : public BaseScreen
+{
+    public:
+            BackgroundScreen(std::string filepath);
+};
+
+class Text
+{
+    public:
+        std::string textInput;
+        vex::color Colour;
+        vex::fontType fontFormat;
+        Text(std::string txtInput, vex::color color, vex::fontType fontParam);
+
+};
+
+int GUIHandler();
 #endif 
