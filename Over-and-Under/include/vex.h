@@ -31,10 +31,10 @@ extern motor_group DrivetrainLeft;
 extern motor_group DrivetrainRight;
 extern motor puncher;
 extern motor climber;
-extern digital_out DigitalOutA;
-extern digital_out DigitalOutB;
+extern digital_out DigitalOutG;
+extern digital_out DigitalOutH;
 
-
+void vexcodeInit(void);
 
 
 

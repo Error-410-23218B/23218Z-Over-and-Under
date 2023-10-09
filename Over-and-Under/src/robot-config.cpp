@@ -13,8 +13,8 @@ motor_group LeftDriveSmart = motor_group(leftMotorA, leftMotorB, leftMotorC);
 motor rightMotorA = motor(PORT6, ratio6_1, false);
 motor rightMotorB = motor(PORT7, ratio6_1, false);
 motor rightMotorC = motor(PORT8, ratio6_1, false);
-digital_out DigitalOutA = digital_out(Brain.ThreeWirePort.H);
-digital_out DigitalOutB = digital_out(Brain.ThreeWirePort.B);
+digital_out DigitalOutG = digital_out(Brain.ThreeWirePort.G);
+digital_out DigitalOutH = digital_out(Brain.ThreeWirePort.H);
 motor_group RightDriveSmart = motor_group(rightMotorA, rightMotorB, rightMotorC);
 drivetrain Drivetrain = drivetrain(LeftDriveSmart, RightDriveSmart, 319.19, 295, 40, mm, 1);
 motor puncher = motor(PORT9, ratio18_1, false);
@@ -82,13 +82,15 @@ void arcadeDrive(bool controllerSide){
         // calculate the drivetrain motor velocities from the controller joystick axies
       // left = Axis3 + Axis4
       // right = Axis3 - Axis4
+      int drivetrainLeftSideSpeed;
+      int drivetrainRightSideSpeed ;
       if(controllerSide){
-      int drivetrainLeftSideSpeed = Controller1.Axis3.position() + Controller1.Axis4.position(); 
-      int drivetrainRightSideSpeed = Controller1.Axis3.position() - Controller1.Axis4.position();
+      drivetrainLeftSideSpeed = Controller1.Axis3.position() + Controller1.Axis4.position(); 
+      drivetrainRightSideSpeed = Controller1.Axis3.position() - Controller1.Axis4.position();
       }
       else{
-              int drivetrainLeftSideSpeed = Controller1.Axis2.position() + Controller1.Axis1.position();
-              int drivetrainRightSideSpeed = Controller1.Axis2.position() - Controller1.Axis1.position();
+              drivetrainLeftSideSpeed = Controller1.Axis2.position() + Controller1.Axis1.position();
+              drivetrainRightSideSpeed = Controller1.Axis2.position() - Controller1.Axis1.position();
       }
       
       // check if the values are inside of the deadband range
@@ -177,14 +179,7 @@ int rc_auto_loop_function_Controller1() {
       tankDrive();
     }
 
-    if(Controller1.ButtonR1.pressing()){
-            DigitalOutA.set(true);
-            DigitalOutB.set(true);
-      }
-    if(Controller1.ButtonR2.pressing()){
-        DigitalOutA.set(false); 
-        DigitalOutB.set(false);
-      }
+  
 
     // wait before repeating the process
     wait(20, msec);

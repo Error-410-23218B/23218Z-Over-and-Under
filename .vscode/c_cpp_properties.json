@@ -4,17 +4,18 @@
             "name": "Win32",
             "includePath": [
                 "${workspaceFolder}/**",
-                "C:\\Users\\Rohan\\AppData\\Roaming\\Code\\User\\globalStorage\\vexrobotics.vexcode\\sdk\\cpp\\V5\\V5_20220726_10_00_00\\vexv5\\**"
+                "C:\\Users\\Rohan\\AppData\\Roaming\\Code\\User\\globalStorage\\vexrobotics.vexcode\\sdk\\cpp\\V5\\V5_20220726_10_00_00/**"
             ],
             "defines": [
                 "_DEBUG",
                 "UNICODE",
                 "_UNICODE"
             ],
-            "compilerPath": "",
+            "windowsSdkVersion": "10.0.22621.0",
+            "compilerPath": "cl.exe",
             "cStandard": "c17",
-            "cppStandard": "c++14",
-            "intelliSenseMode": "windows-clang-x64"
+            "cppStandard": "c++17",
+            "intelliSenseMode": "windows-msvc-x64"
         }
     ],
     "version": 4

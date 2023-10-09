@@ -17,14 +17,12 @@
 		{
 			"name": "Win32",
 			"includePath": [
-				"${vex_sdkIncludes}",
-				"C:\\Users\\Administrator\\Documents\\23218Z\\sdk\\vexv5\\gcc\\include/**"
+				"${vex_sdkIncludes}"
 			],
 			"compilerPath": "${vex_compilerPath}",
 			"cStandard": "gnu99",
 			"cppStandard": "gnu++11",
-			"intelliSenseMode": "windows-clang-x86",
-			"configurationProvider": "ms-vscode.makefile-tools"
+			"intelliSenseMode": "windows-clang-x86"
 		},
 		{
 			"name": "Mac",
