@@ -6,7 +6,7 @@
 #define gui_h
 
 
-class Button
+class Button : public BaseScreen
 {
 protected:
     int xlength;
@@ -17,7 +17,7 @@ protected:
 
 public:
     Button(int xsize, int ysize, int xpos, int ypos, vex::color color, void (*func)(void));
-
+    friend void nextButton();
 };
 
 class BaseScreen
@@ -30,7 +30,10 @@ protected:
     BaseScreen *NextScreen;
 public:
     BaseScreen(std::string filepath, int x, int y,BaseScreen* lastScreen,BaseScreen* nextScreen);
+    ~BaseScreen();
     void loadScreen();
+    void nextButton();
+    
 };
 
 class BackgroundScreen : public BaseScreen

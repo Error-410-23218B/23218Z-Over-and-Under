@@ -12,11 +12,22 @@ BaseScreen::BaseScreen(std::string filepath, int x, int y,BaseScreen* lastScreen
     
 }
 
+BaseScreen::~BaseScreen(){
+    Brain.Screen.clearScreen();
+    delete LastScreen;
+    delete NextScreen;
+    
+}
+
+
 void BaseScreen::loadScreen()
 {
     Brain.Screen.clearScreen();
     Brain.Screen.drawImageFromFile(FilePath.c_str(), x, y);
+
 }
+
+
 
 BackgroundScreen::BackgroundScreen(std::string filepath,BaseScreen* lastScreen = NULL,BaseScreen* nextScreen = NULL) : BaseScreen(filepath, 0, 0,lastScreen,nextScreen) {}
 
@@ -38,7 +49,6 @@ Text::Text(std::string txtInput, vex::color color, vex::fontType fontParam) : te
     Brain.Screen.setFont(fontFormat);
     Brain.Screen.setFillColor(Colour);
     Brain.Screen.print(textInput);
-
 }
 
 void buttonTrial(){
@@ -50,7 +60,11 @@ int GUIHandler()
     //Object creation happens here, runs on seperate task?
     Text title = Text("This is a test",vex::color::black,vex::fontType::mono30);
     Button autonSkills = Button(20,30,50,40,vex::color::blue,buttonTrial);
-    BackgroundScreen autonBlueRun("MAIN.png",NULL,NULL);
-    BackgroundScreen autonBlueRun("AUTONBLUERUN.png");
+    BackgroundScreen mainScreen("MAIN.png",NULL,NULL);
+    BackgroundScreen autonBlueRun("AUTONBLUERUN.png",mainScreen);
+    BackgroundScreen autonRedRun("AUTONREDRUN.png",mainScreen);
+    BackgroundScreen autonSkillRun("AUTONSKILLRUN.png",mainScreen);
+
+
     return 0;
 }
