@@ -46,10 +46,6 @@ Button::Button(int xsize, int ysize, int xpos, int ypos, vex::color color, void 
 
     Brain.Screen.setFillColor(colour);
 
-    if (xTouch > xposition && xTouch < (xposition + xlength) && yTouch > yposition && yTouch < (yposition + yheight))
-    {
-        func();
-    }
 }
 
 Button::~Button(){
@@ -58,7 +54,15 @@ Button::~Button(){
 
 Button::load(){
     Brain.Screen.drawRectangle(xlength, yheight, xposition, yposition);
-
+    while (1)
+    {
+        if (xTouch > xposition && xTouch < (xposition + xlength) && yTouch > yposition && yTouch < (yposition + yheight))
+        {
+            func(); 
+        }
+    }
+    
+    
 }
 Text::Text(std::string txtInput, vex::color color, vex::fontType fontParam) : textInput(txtInput), Colour(color),fontFormat(fontParam)
 {
@@ -80,7 +84,5 @@ int GUIHandler()
     BackgroundScreen autonBlueRun("AUTONBLUERUN.png",mainScreen);
     BackgroundScreen autonRedRun("AUTONREDRUN.png",mainScreen);
     BackgroundScreen autonSkillRun("AUTONSKILLRUN.png",mainScreen);
-
-
     return 0;
 }
