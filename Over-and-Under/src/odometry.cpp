@@ -10,7 +10,7 @@
     const double sL = 5.0;
     const double sR = 5.0;
 
-    eftl::Odometry::Odometry(long double encoder)
+eftl::Odometry::Odometry(long double encoder)
     {
         encoderDeg = encoder;
         encoderDelta = encoderDeg - prevEncoder;
@@ -21,7 +21,7 @@
     eftl::Odometry EncoderRight(2.0);
     eftl::Odometry EncoderBack(3.0);
 
-    array<double,2> eftl::Odometry::tracking()
+array<double,2> eftl::Odometry::tracking()
     {
 
         // Tracking Algorithm, calculates absoulute position of robot on field.
@@ -70,7 +70,7 @@
         return absoulutePosition;
     }
 
-    int eftl::Odometry::trackingCallback()
+int eftl::Odometry::trackingCallback()
     {
         tracking();
         return 0;

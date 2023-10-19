@@ -101,10 +101,4 @@ void eftl::customDrivetrain::odometricMotion()
     array<double,2> position Odometry::tracking();
     distance = sqrt(pow(position[0],2)+pow(position[1],2));
     
-
-
-
-
-
-
 }

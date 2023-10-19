@@ -61,8 +61,6 @@ Button::load(){
             func(); 
         }
     }
-    
-    
 }
 Text::Text(std::string txtInput, vex::color color, vex::fontType fontParam) : textInput(txtInput), Colour(color),fontFormat(fontParam)
 {
@@ -77,7 +75,7 @@ void buttonTrial(){
 
 int GUIHandler()
 {
-    //Object creation happens here, runs on seperate task?
+    // Object creation happens here, runs on seperate task?
     Text title = Text("This is a test",vex::color::black,vex::fontType::mono30);
     Button autonSkills(20,30,50,40,vex::color::blue,buttonTrial);
     BackgroundScreen mainScreen("MAIN.png",NULL,NULL);

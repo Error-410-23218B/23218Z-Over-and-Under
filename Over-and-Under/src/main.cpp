@@ -19,10 +19,6 @@ competition Competition;
 
 // define your global instances of motors and other devices here
 
-
-
-
-
 void handlerCallback(){
     Handler();
 }
@@ -43,7 +39,6 @@ void drivercontrol(){
     Controller.ButtonR2.pressed(pneumF);
 }
 
-
 int main(){  
     Drivetrain.setDriveVelocity(100,percent);
     puncher.setVelocity(100,percent);
@@ -55,8 +50,6 @@ int main(){
 void pneumaticsT(){DigitalOutG.set(true);DigitalOutH.set(true);}
 void pneumaticsOff(){DigitalOutG.set(false);DigitalOutH.set(false);}
 
-
-
 int main() {
     vexcodeInit();
     // task tracking(eftl::Odometry::trackingCallback,15);
@@ -64,4 +57,4 @@ int main() {
     Competition.autonomous(autonomous);
     Competition.drivercontrol(drivercontrol);
      return 0;
-    }
+}
