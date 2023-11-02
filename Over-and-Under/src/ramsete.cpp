@@ -39,9 +39,12 @@ class ramseteController{
        tempArray[1] = B * LinVeloc[1];
        transformMatrix = {{cos(actual),sin(actual),0},{-sin(actual),cos(actual),0},{0,0,1}} 
        differntialMatrix = {{cos(actual),sin(actual),0},{-sin(actual),cos(actual),0},{0,0,1}}
+       error[0] = transformMatrix[0] * differentialMatrix[0];
+       error[1] = transformMatrix[1] * differentialMatrix[1];
+       error[2] = transformMatrix[2] * differentialMatrix[2];
        k = 2*Damp*sqrt(angularVelocityVector + tempArray);
        v = angularVelocity[1] * cos(actual);
-       omega = omegaDesired + k* 
+       omega = omegaDesired + k* error[2] + (())
     }
 
 }
