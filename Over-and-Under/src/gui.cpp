@@ -45,7 +45,6 @@ Button::Button(int xsize, int ysize, int xpos, int ypos, vex::color color, void 
     int yTouch = Brain.Screen.yPosition();
 
     Brain.Screen.setFillColor(colour);
-
 }
 
 Button::~Button(){

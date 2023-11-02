@@ -96,6 +96,7 @@ void eftl::customDrivetrain::turnFor(vex::turnType turnVar, double turnAmount)
 
 void eftl::customDrivetrain::odometricMotion()
 {
+    
     double distance;
     double angle;
     array<double,2> position Odometry::tracking();
