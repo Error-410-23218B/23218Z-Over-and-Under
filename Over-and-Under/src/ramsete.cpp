@@ -1,6 +1,7 @@
 #include "vex.h"
 #include <math>
 #include <array>
+#include <vector>
 class ramseteController
 {
 public:
@@ -25,6 +26,8 @@ public:
     array<double, 3> differentialMatrix;
     array<double, 2> angularVelocityVector;
     array<double, 2> linearVelocityVector;
+    double left;
+    double right;
     double B, Damp, LinVeloc, AngVeloc,x;
 
     ramseteController(double iB, double iDamp, double pLinVeloc, double pAngVeloc) : B(iB), Damp(iDamp), LinVeloc(pLinVeloc), AngVeloc(pAngVeloc)
@@ -37,6 +40,7 @@ public:
             paramArray[i] += cos();
         }
         return paramArray;
+        
     }
 
     void ramseteCalculate()
@@ -50,9 +54,12 @@ public:
 
         transformMatrix = { {cos(actual), sin(actual), 0},
                             {-sin(actual), cos(actual), 0},
-                            {0, 0, 1} } differntialMatrix = { {cos(actual), sin(actual), 0},
-                                                              {-sin(actual), cos(actual), 0},
-                                                              {0, 0, 1} } error[0] = transformMatrix[0] * differentialMatrix[0];
+                            {0, 0, 1} 
+                            };
+         differntialMatrix = { {cos(actual), sin(actual), 0},
+                                {-sin(actual), cos(actual), 0},
+                                {0, 0, 1} };
+        error[0] = transformMatrix[0] * differentialMatrix[0];
         error[1] = transformMatrix[1] * differentialMatrix[1];
         error[2] = transformMatrix[2] * differentialMatrix[2];
         k = 2 * Damp * sqrt(angularVelocityVector + tempArray);
@@ -62,5 +69,6 @@ public:
         omega = omegaDesired + k * error[2] + ((B * linearDesired * sin(error[2]) * error[1]) / error[2]);
         left = LinVeloc + AngVeloc;
         right = LinVeloc - AngVeloc;
+
     }
 }

@@ -22,6 +22,9 @@ void basicAuton(){
 
 void skillAuton(){
     puncherMotor.spin(forward);
+    wait(30000,msec);
+    Drivetrain.driveFor(forward,200,mm);
+    Drivetrain.turnFor(right,30,degrees);
     
 }
 
