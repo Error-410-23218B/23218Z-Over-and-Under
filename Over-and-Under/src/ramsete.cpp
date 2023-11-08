@@ -69,6 +69,6 @@ public:
         omega = omegaDesired + k * error[2] + ((B * linearDesired * sin(error[2]) * error[1]) / error[2]);
         left = LinVeloc + AngVeloc;
         right = LinVeloc - AngVeloc;
-
+    
     }
 }
