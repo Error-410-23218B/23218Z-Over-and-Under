@@ -2,6 +2,7 @@
 #include <math>
 #include <array>
 #include <vector>
+#include <numeric>
 class ramseteController
 {
 public:
@@ -46,7 +47,7 @@ public:
     void ramseteCalculate()
     {
 
-        error = {{xdesired - }};
+        error = {{xdesired}};
         array<double, 2> tempArray;
         angularVelocityVector = {2, AngVeloc};
         linearVelocityVector = {2, LinVeloc} tempArray[0] = B * LinVeloc[0];
@@ -56,16 +57,14 @@ public:
                             {-sin(actual), cos(actual), 0},
                             {0, 0, 1} 
                             };
-         differntialMatrix = { {cos(actual), sin(actual), 0},
-                                {-sin(actual), cos(actual), 0},
-                                {0, 0, 1} };
-        error[0] = transformMatrix[0] * differentialMatrix[0];
-        error[1] = transformMatrix[1] * differentialMatrix[1];
-        error[2] = transformMatrix[2] * differentialMatrix[2];
+         differentialMatrix = {
+            
+         }
+        error = std::inner_product(transformMatrix.begin(),tranformMatrix.end(),differentialMatrix.begin(),0);
         k = 2 * Damp * sqrt(angularVelocityVector + tempArray);
         v = angularVelocity[1] * cos(actual);
         LinVeloc = v / wheelCircumference;
-
+        
         omega = omegaDesired + k * error[2] + ((B * linearDesired * sin(error[2]) * error[1]) / error[2]);
         left = LinVeloc + AngVeloc;
         right = LinVeloc - AngVeloc;
