@@ -21,17 +21,20 @@ public:
     double linearDesired;
 
     const double wheelCircumference = 5;
-    array<double, 3> error;
-    array<double, 3> transformMatrix;
-    array<double, 3> desiredMatrix;
-    array<double, 3> differentialMatrix;
-    array<double, 2> angularVelocityVector;
-    array<double, 2> linearVelocityVector;
+    vector<double> error;
+    vector<double> transformMatrix;
+    vector<double> desiredMatrix;
+    vector<double> differentialMatrix;
+    vector<double> angularVelocityVector;
+    vector<double> linearVelocityVector;
     double left;
     double right;
     double B, Damp, LinVeloc, AngVeloc,x;
-
-    ramseteController(double iB, double iDamp, double pLinVeloc, double pAngVeloc) : B(iB), Damp(iDamp), LinVeloc(pLinVeloc), AngVeloc(pAngVeloc)
+    vector<double,3> desired = {};
+    vector<double,3> actual = {};
+    double differential;
+    double smallScalar;
+    ramseteController(double iB, double iDamp, double pLinVeloc, double pAngVeloc,double small_scalar) : B(iB), Damp(iDamp), LinVeloc(pLinVeloc), AngVeloc(pAngVeloc),smallScalar(small_scalar)
     {}
 
     array<double, 2> matrixIterate(array<double, 2> paramArray)
@@ -41,33 +44,30 @@ public:
             paramArray[i] += cos();
         }
         return paramArray;
-        
     }
 
     void ramseteCalculate()
     {
 
-        error = {{xdesired}};
         array<double, 2> tempArray;
         angularVelocityVector = {2, AngVeloc};
         linearVelocityVector = {2, LinVeloc} tempArray[0] = B * LinVeloc[0];
         tempArray[1] = B * LinVeloc[1];
 
-        transformMatrix = { {cos(actual), sin(actual), 0},
-                            {-sin(actual), cos(actual), 0},
+        transformMatrix = { 
+                            {cos(actual), sin(actual), 0},
+                            {-sin(actual), cos(actual),0},
                             {0, 0, 1} 
-                            };
-         differentialMatrix = {
-            
-         }
+                          };
+         
         error = std::inner_product(transformMatrix.begin(),tranformMatrix.end(),differentialMatrix.begin(),0);
         k = 2 * Damp * sqrt(angularVelocityVector + tempArray);
         v = angularVelocity[1] * cos(actual);
         LinVeloc = v / wheelCircumference;
-        
+        angularVelocity = ;
         omega = omegaDesired + k * error[2] + ((B * linearDesired * sin(error[2]) * error[1]) / error[2]);
         left = LinVeloc + AngVeloc;
-        right = LinVeloc - AngVeloc;
-    
+        right = LinVeloc - AngVeloc;  
+        
     }
 }
