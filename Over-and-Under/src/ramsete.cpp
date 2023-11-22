@@ -1,4 +1,5 @@
 #include "vex.h"
+#include "odometry.h"
 #include <math>
 #include <array>
 #include <vector>
