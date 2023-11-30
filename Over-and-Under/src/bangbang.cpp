@@ -28,16 +28,15 @@ bangbang::step(void (*on_pointer),void (*off_pointer)){
     while(1)
     {
     
-    if (sensorValue < threshold)
-    {
-        on_pointer();
-    }
+        if (sensorValue < threshold)
+        {
+            on_pointer();
+        }
 
-
-    else{
-        off_pointer();
-    }
+        else{
+            off_pointer();
+        }
     }
     wait(20,msec);
 }
-     68856
+     

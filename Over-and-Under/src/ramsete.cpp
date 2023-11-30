@@ -38,18 +38,17 @@ public:
     ramseteController(double iB, double iDamp, double pLinVeloc, double pAngVeloc,double small_scalar) : B(iB), Damp(iDamp), LinVeloc(pLinVeloc), AngVeloc(pAngVeloc),smallScalar(small_scalar)
     {}
 
-    array<double, 2> matrixIterate(array<double, 2> paramArray)
-    {
-        for (int i = 0; i < sizeof(paramArray / sizeof(double)); i++)
-        {
-            paramArray[i] += cos();
-        }
-        return paramArray;
-    }
+    // array<double, 2> matrixIterate(array<double, 2> paramArray)
+    // {
+    //     for (int i = 0; i < sizeof(paramArray / sizeof(double)); i++)
+    //     {
+    //         paramArray[i] += cos();
+    //     }
+    //     return paramArray;
+    // }
 
     void ramseteCalculate()
     {
-
         array<double, 2> tempArray;
         angularVelocityVector = {2, AngVeloc};
         linearVelocityVector = {2, LinVeloc} tempArray[0] = B * LinVeloc[0];
@@ -65,10 +64,9 @@ public:
         k = 2 * Damp * sqrt(angularVelocityVector + tempArray);
         v = angularVelocity[1] * cos(actual);
         LinVeloc = v / wheelCircumference;
-        angularVelocity = ;
+        angularVelocity =  ;
         omega = omegaDesired + k * error[2] + ((B * linearDesired * sin(error[2]) * error[1]) / error[2]);
         left = LinVeloc + AngVeloc;
         right = LinVeloc - AngVeloc;  
-        
     }
 }
