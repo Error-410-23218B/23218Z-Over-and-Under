@@ -43,7 +43,7 @@ array<double,2> eftl::Odometry::tracking()
         if (deltaAbsOrientation == 0)
         {
             localOffset[0] = EncoderBack.encoderDeg;
-            localOffset[1] = EncoderRight.e ncoderDeg;
+            localOffset[1] = EncoderRight.encoderDeg;
         }
         else
         {
