@@ -15,7 +15,9 @@ protected:
             double rightEncoder;
             double backEncoder;
 
-Encoder radToDeg(){
+
+
+Encoder radToDeg() const{
     return {
         leftEncoder * 180/M_PI,
         rightEncoder * 180/M_PI,
@@ -106,25 +108,24 @@ odometry2::~odometry2()
 {
 }
 
-void odometry2::step(Encoder encoderVal){
-    current = encoderVal;
+inline void odometry2::step(Encoder encoderVal){
 
-    difference = current - prev;
+    difference = encoderVal - prev;
     wheelDistance = (difference.radToDeg()/360) * (2 * M_PI * wheelRadius);
     deltaOrientation = (difference.leftEncoder - difference.rightEncoder)/(leftToCenter+rightToCenter);
-    prev = current;
-    lastResetDistance = ((skid - current).radToDeg()/360) * (2 * M_PI * wheelRadius);
+    prev = encoderVal;
+    lastResetDistance = ((skid - encoderVal).radToDeg()/360) * (2 * M_PI * wheelRadius);
     absouluteOrientation = prevGlobalOrientationAtLastReset + (lastResetDistance.leftEncoder - lastResetDistance.rightEncoder) / (leftToCenter + rightToCenter);
     changeInGlobalOrientation = absouluteOrientation - prevGlobalOrientation;
     if (changeInGlobalOrientation == 0)
     {
-            localOffset[0],localOffset[1] = difference.backEncoder,difference.rightEncoder;
+        localOffset[0],localOffset[1] = difference.backEncoder,difference.rightEncoder;
     }
     else{
-        localOffset[0],localOffset[1] = (difference.backEncoder/changeInGlobalOrientation) + backToCenter, (difference.rightEncoder/changeInGlobalOrientation)+rightToCenter;
+        localOffset[0],localOffset[1] = (difference.backEncode  r/changeInGlobalOrientation) + backToCenter, (difference.rightEncoder/changeInGlobalOrientation)+rightToCenter;
         localOffset[0],localOffset[1] *= (2 * sin(absouluteOrientation/2));
-
     }
+    
 
     averageOrientation = prevGlobalOrientation + (changeInGlobalOrientation/2);
     double localOffsetPolar[2] = {hypot(localOffset[0],localOffset[1]), atan(((double)localOffset[1]/localOffset[0]))};
