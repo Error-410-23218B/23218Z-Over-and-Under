@@ -33,6 +33,9 @@ extern motor puncher;
 extern motor climber;
 extern digital_out DigitalOutG;
 extern digital_out DigitalOutH;
+extern encoder EncoderA;
+extern encoder EncoderC;
+extern encoder EncoderE;
 
 void vexcodeInit(void);
 

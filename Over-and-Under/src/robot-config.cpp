@@ -20,6 +20,9 @@ drivetrain Drivetrain = drivetrain(LeftDriveSmart, RightDriveSmart, 319.19, 295,
 motor puncher = motor(PORT9, ratio18_1, false);
 motor climber = motor(PORT10, ratio18_1, false);
 motor_group RightDriveSmart = motor_group(rightMotorA, rightMotorB);
+encoder EncoderA = encoder(Brain.ThreeWirePort.A);
+encoder EncoderC = encoder(Brain.ThreeWirePort.C);
+encoder EncoderE = encoder(Brain.ThreeWirePort.E);
 bool DrivetrainNeedsToBeStopped_Controller1 = true;
 bool Controller1RightShoulderControlMotorsStopped = true;
 

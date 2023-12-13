@@ -17,13 +17,20 @@ struct Encoder
 
 
 
-Encoder radToDeg() const{
+Encoder getHeading(bool radians) const{
+    if(true){
+        return this;
+    }
+    else{
     return {
         leftEncoder * 180/M_PI,
         rightEncoder * 180/M_PI,
         backEncoder * 180/M_PI
     };
+    }
 }
+
+
 
 
 Encoder operator-(const Encoder& other) const
