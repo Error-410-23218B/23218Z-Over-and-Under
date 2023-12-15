@@ -68,9 +68,6 @@ Encoder operator+(const Encoder& other) const
             backEncoder / operand
         };
     }
-
-
-
 };
 
 Encoder current;
